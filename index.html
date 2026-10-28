@@ -204,11 +204,11 @@
             opacity: var(--snow-o);
         }
         .snowflake {
-            position: absolute; top: -20px; color: var(--ruby); user-select: none;
+            position: absolute; top: -20px; color: #fff; user-select: none;
             animation: snowfall linear infinite;
             text-shadow: 0 0 3px rgba(90, 110, 140, .85), 0 0 1px rgba(90, 110, 140, .9);
         }
-        html[data-theme="dark"] .snowflake { color: #fff; text-shadow: 0 0 6px rgba(255, 255, 255, .8); }
+        html[data-theme="dark"] .snowflake { text-shadow: 0 0 6px rgba(255, 255, 255, .8); }
         @keyframes snowfall {
             0% { transform: translateY(-20px) translateX(0) rotate(0deg); }
             50% { transform: translateY(50vh) translateX(35px) rotate(180deg); }
@@ -577,10 +577,6 @@
             html { scroll-behavior: auto; }
         }
 
-        @media (max-width: 767px) {
-            .orb { animation: none; filter: blur(40px); }
-        }
-
     </style>
 </head>
 
@@ -727,7 +723,7 @@
                     <div class="relative hero-rise d2 lg:pl-6">
 
                         <!-- Rotating wreath seal -->
-                        <div class="seal -top-10 -left-6 md:-left-12">
+                        <!-- <div class="seal -top-10 -left-6 md:-left-12">
                             <svg viewBox="0 0 200 200" class="absolute inset-0 w-full h-full spin-slow">
                                 <defs>
                                     <path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
@@ -739,7 +735,7 @@
                                 </text>
                             </svg>
                             <span class="relative text-3xl text-champagne">❄</span>
-                        </div>
+                        </div> -->
 
                         <div class="gold-frame">
                             <div class="relative overflow-hidden shadow-hero">
@@ -769,8 +765,8 @@
 
         <div class="absolute inset-0 opacity-[.07]"
             style="background-image:radial-gradient(circle,#fff 1px,transparent 1.5px);background-size:26px 26px"></div>
-        <span class="absolute -left-6 top-6 text-[14rem] leading-none text-gold/10 font-serif select-none">❄</span>
-        <span class="absolute -right-6 bottom-0 text-[14rem] leading-none text-gold/10 font-serif select-none">✦</span>
+        <!-- <span class="absolute -left-6 top-6 text-[14rem] leading-none text-gold/10 font-serif select-none">❄</span>
+        <span class="absolute -right-6 bottom-0 text-[14rem] leading-none text-gold/10 font-serif select-none">✦</span> -->
 
         <div class="relative max-w-4xl mx-auto px-6 lg:px-10 text-center reveal">
 
@@ -798,7 +794,7 @@
     <!-- =====================================================
      MARQUEE RIBBON
 ===================================================== -->
-    <div class="relative marquee-bar py-4 overflow-hidden" aria-hidden="true">
+    <!-- <div class="relative marquee-bar py-4 overflow-hidden" aria-hidden="true">
         <div class="marquee t-accent font-serif italic text-2xl whitespace-nowrap">
             <div class="flex gap-10 pr-10">
                 <span>Pure</span><span class="text-gold">✦</span><span>Ethical</span><span class="text-gold">✦</span><span>Beautiful</span><span class="text-gold">✦</span><span>Luxury for Every Woman</span><span class="text-gold">✦</span><span>Beauty without Limits</span><span class="text-gold">✦</span>
@@ -809,7 +805,7 @@
                 <span>Pure</span><span class="text-gold">✦</span><span>Ethical</span><span class="text-gold">✦</span><span>Beautiful</span><span class="text-gold">✦</span><span>Luxury for Every Woman</span><span class="text-gold">✦</span><span>Beauty without Limits</span><span class="text-gold">✦</span>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- =====================================================
@@ -830,12 +826,12 @@
                         </div>
                     </div>
                     <!-- Floating gift-tag -->
-                    <div class="hidden md:flex absolute -bottom-10 -right-8 z-10 w-36 h-36 rounded-full bg-burgundy border border-gold/60 items-center justify-center text-center shadow-2xl">
+                    <!-- <div class="hidden md:flex absolute -bottom-10 -right-8 z-10 w-36 h-36 rounded-full bg-burgundy border border-gold/60 items-center justify-center text-center shadow-2xl">
                         <div>
                             <p class="t-accent text-2xl">✦</p>
                             <p class="font-serif italic text-xl leading-tight text-white">Pure.<br>Ethical.<br>Beautiful.</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Text -->
@@ -1459,19 +1455,16 @@
         /* Snowfall */
         const snowContainer = document.getElementById('snow-container');
         const flakes = ['•', '•', '❄', '•', '✦'];
-        const isMobile = window.matchMedia('(max-width: 767px)').matches;
-        const flakeCount = isMobile ? 20 : 45;
 
-        for (let i = 0; i < flakeCount; i++) {
+        for (let i = 0; i < 45; i++) {
             const snowflake = document.createElement('span');
             snowflake.className = 'snowflake';
             snowflake.innerHTML = flakes[Math.floor(Math.random() * flakes.length)];
             snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.fontSize = (Math.random() * (isMobile ? 8 : 12) + 6) + 'px';
-            snowflake.style.opacity = Math.random() * .4 + .5;
-            const duration = Math.random() * 8 + 8;
-            snowflake.style.animationDuration = duration + 's';
-            snowflake.style.animationDelay = -Math.random() * duration + 's';
+            snowflake.style.fontSize = (Math.random() * 12 + 6) + 'px';
+            snowflake.style.opacity = Math.random() * .45 + .45;
+            snowflake.style.animationDuration = (Math.random() * 8 + 8) + 's';
+            snowflake.style.animationDelay = (Math.random() * 10) + 's';
             snowContainer.appendChild(snowflake);
         }
 
