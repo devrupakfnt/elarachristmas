@@ -204,11 +204,11 @@
             opacity: var(--snow-o);
         }
         .snowflake {
-            position: absolute; top: -20px; color: #fff; user-select: none;
+            position: absolute; top: -20px; color: var(--ruby); user-select: none;
             animation: snowfall linear infinite;
             text-shadow: 0 0 3px rgba(90, 110, 140, .85), 0 0 1px rgba(90, 110, 140, .9);
         }
-        html[data-theme="dark"] .snowflake { text-shadow: 0 0 6px rgba(255, 255, 255, .8); }
+        html[data-theme="dark"] .snowflake { color: #fff; text-shadow: 0 0 6px rgba(255, 255, 255, .8); }
         @keyframes snowfall {
             0% { transform: translateY(-20px) translateX(0) rotate(0deg); }
             50% { transform: translateY(50vh) translateX(35px) rotate(180deg); }
@@ -575,6 +575,10 @@
             *, *::before, *::after { animation: none !important; transition: none !important; }
             .reveal { opacity: 1; transform: none; }
             html { scroll-behavior: auto; }
+        }
+
+        @media (max-width: 767px) {
+            .orb { animation: none; filter: blur(40px); }
         }
 
     </style>
@@ -1455,16 +1459,19 @@
         /* Snowfall */
         const snowContainer = document.getElementById('snow-container');
         const flakes = ['•', '•', '❄', '•', '✦'];
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+        const flakeCount = isMobile ? 20 : 45;
 
-        for (let i = 0; i < 45; i++) {
+        for (let i = 0; i < flakeCount; i++) {
             const snowflake = document.createElement('span');
             snowflake.className = 'snowflake';
             snowflake.innerHTML = flakes[Math.floor(Math.random() * flakes.length)];
             snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.fontSize = (Math.random() * 12 + 6) + 'px';
-            snowflake.style.opacity = Math.random() * .45 + .45;
-            snowflake.style.animationDuration = (Math.random() * 8 + 8) + 's';
-            snowflake.style.animationDelay = (Math.random() * 10) + 's';
+            snowflake.style.fontSize = (Math.random() * (isMobile ? 8 : 12) + 6) + 'px';
+            snowflake.style.opacity = Math.random() * .4 + .5;
+            const duration = Math.random() * 8 + 8;
+            snowflake.style.animationDuration = duration + 's';
+            snowflake.style.animationDelay = -Math.random() * duration + 's';
             snowContainer.appendChild(snowflake);
         }
 
