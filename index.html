@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script>
+        /* Theme: light by default, remembers the visitor's choice */
+        (function () {
+            var t = 'light';
+            try { var s = localStorage.getItem('elara-theme'); if (s === 'dark' || s === 'light') t = s; } catch (e) { }
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
     <title>ELARA by LA Evolution | Christmas Collection</title>
-
     <meta name="description"
         content="ELARA by LA Evolution — Luxury, beauty, wellness and self-care. Celebrate the season with our Christmas collection.">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
     <script>
@@ -38,7 +40,6 @@
                         black: '#1A1A1A',
                         dark: '#0A0A0A',
                     },
-
                     fontFamily: {
                         serif: ['Cormorant Garamond', 'serif'],
                         sans: ['Montserrat', 'sans-serif']
@@ -49,1784 +50,1232 @@
     </script>
 
     <style>
-        html {
-            scroll-behavior: smooth;
+        /* =====================================================
+           THEME TOKENS — light is the default, dark overrides
+        ===================================================== */
+        :root {
+            --gold: #B8913F;
+            --gold-soft: #C9A45C;
+            --champagne: #E7D29A;
+            --burgundy: #651D2A;
+            --ruby: #8B2635;
+            --forest: #173B2C;
+
+            --page-bg: #FAF7F0;
+            --body-color: #2B1318;
+            --t-head: #2B1318;
+            --t-body: #4A3A3D;
+            --t-accent: #651D2A;
+            --sel-bg: #651D2A;
+            --sel-fg: #fff;
+
+            --glass: rgba(255, 255, 255, .78);
+            --form-bg: rgba(255, 255, 255, .9);
+            --form-bd: rgba(184, 145, 63, .6);
+            --form-sh: 0 40px 80px -40px rgba(101, 29, 42, .5);
+            --panel-bg: rgba(255, 255, 255, .85);
+            --panel-bd: rgba(184, 145, 63, .55);
+            --panel-sh: 0 30px 60px -35px rgba(101, 29, 42, .4);
+            --bd-gold: rgba(184, 145, 63, .45);
+
+            --img-wrap-bg: #fff;
+            --img-sh: 0 40px 70px -35px rgba(101, 29, 42, .55);
+            --hero-sh: 0 50px 90px -35px rgba(101, 29, 42, .6);
+
+            --ov-hero: linear-gradient(to top, rgba(101, 29, 42, .35), transparent 60%);
+            --ov-coll: linear-gradient(to top, rgba(101, 29, 42, .45), transparent 60%);
+            --ov-blog: linear-gradient(to top, rgba(101, 29, 42, .35), transparent 60%);
+            --ov-about: linear-gradient(to top, rgba(101, 29, 42, .2), transparent 60%);
+
+            --string: #8a7a6a;
+            --seal-bg: #651D2A;
+            --marquee-bg: #fff;
+            --marquee-bd: rgba(184, 145, 63, .5);
+            --pine: #173B2C;
+            --dot: rgba(101, 29, 42, .7);
+            --hero-base: #FAF7F0;
+            --orb-o: .22;
+            --orb-gold: #C9A45C;
+            --snow-o: 1;
         }
+
+        html[data-theme="dark"] {
+            --gold: #C9A45C;
+
+            --page-bg: #0A0A0A;
+            --body-color: #f3ece0;
+            --t-head: #ffffff;
+            --t-body: rgba(255, 255, 255, .72);
+            --t-accent: #D8BD7B;
+            --sel-bg: #C9A45C;
+            --sel-fg: #1a1a1a;
+
+            --glass: rgba(0, 0, 0, .28);
+            --form-bg: rgba(0, 0, 0, .5);
+            --form-bd: rgba(201, 164, 92, .4);
+            --form-sh: 0 40px 90px -30px rgba(0, 0, 0, .9);
+            --panel-bg: rgba(0, 0, 0, .3);
+            --panel-bd: rgba(201, 164, 92, .4);
+            --panel-sh: none;
+            --bd-gold: rgba(201, 164, 92, .25);
+
+            --img-wrap-bg: #000;
+            --img-sh: 0 40px 80px -30px rgba(0, 0, 0, .9);
+            --hero-sh: 0 50px 100px -30px rgba(0, 0, 0, .9);
+
+            --ov-hero: linear-gradient(to top, rgba(101, 29, 42, .6), transparent 50%, rgba(0, 0, 0, .2));
+            --ov-coll: linear-gradient(to top, rgba(0, 0, 0, .7), transparent 60%);
+            --ov-blog: linear-gradient(to top, rgba(0, 0, 0, .6), transparent 60%);
+            --ov-about: linear-gradient(to top, rgba(0, 0, 0, .4), transparent 60%);
+
+            --string: #3a3a3a;
+            --seal-bg: #0A0A0A;
+            --marquee-bg: #000;
+            --marquee-bd: rgba(201, 164, 92, .3);
+            --pine: #C9A45C;
+            --dot: #fff;
+            --hero-base: #000;
+            --orb-o: .5;
+            --orb-gold: rgba(201, 164, 92, .4);
+            --snow-o: .75;
+        }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: #FAF7F0;
-            color: #1a1a1a;
+            background: var(--page-bg);
+            color: var(--body-color);
+            overflow-x: hidden;
         }
 
-        .font-serif {
-            font-family: 'Cormorant Garamond', serif;
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        ::selection { background: var(--sel-bg); color: var(--sel-fg); }
+
+        /* Smooth cross-fade when the switch is flipped */
+        html.theme-anim *:not(.reveal):not(.snowflake) {
+            transition: color .5s ease, background-color .5s ease, border-color .5s ease, fill .5s ease, stroke .5s ease !important;
         }
 
-        /* --------------------------------
-           Snow
-        -------------------------------- */
+        /* ---------- Semantic text + surface helpers ---------- */
+        .t-head { color: var(--t-head); }
+        .t-body { color: var(--t-body); }
+        .t-accent { color: var(--t-accent); }
 
+        .glass { background: var(--glass); }
+        .glass-form { background: var(--form-bg); border-color: var(--form-bd); box-shadow: var(--form-sh); }
+        .glass-panel { background: var(--panel-bg); border-color: var(--panel-bd); box-shadow: var(--panel-sh); }
+        .bd-gold { border-color: var(--bd-gold); }
+        .img-wrap { background: var(--img-wrap-bg); box-shadow: var(--img-sh); }
+        .shadow-hero { box-shadow: var(--hero-sh); }
+
+        .ov-hero { background: var(--ov-hero); }
+        .ov-coll { background: var(--ov-coll); }
+        .ov-blog { background: var(--ov-blog); }
+        .ov-about { background: var(--ov-about); }
+
+        .lights-string { stroke: var(--string); }
+        .seal-bg { fill: var(--seal-bg); }
+        .pine { color: var(--pine); }
+        .dots-var { background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.5px); background-size: 26px 26px; }
+        .hero-sec { background-color: var(--hero-base); }
+        .marquee-bar { background: var(--marquee-bg); border-top: 1px solid var(--marquee-bd); border-bottom: 1px solid var(--marquee-bd); }
+
+        /* ---------- Metallic text ---------- */
+        .gold-text {
+            background: linear-gradient(100deg, #651D2A 0%, #A8312F 28%, #C9A45C 52%, #8B2635 76%, #651D2A 100%);
+            background-size: 220% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            animation: shimmer 8s linear infinite;
+        }
+        .on-dark .gold-text,
+        html[data-theme="dark"] .gold-text {
+            background-image: linear-gradient(100deg, #A9823A 0%, #F1DFA6 30%, #C9A45C 55%, #F6E7B8 78%, #B08A42 100%);
+            background-size: 220% auto;
+        }
+        @keyframes shimmer { to { background-position: 220% center; } }
+
+        /* ---------- Snow ---------- */
         #snow-container {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 9999;
-            overflow: hidden;
+            position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden;
+            opacity: var(--snow-o);
         }
-
         .snowflake {
-            position: absolute;
-            top: -20px;
-            color: white;
-            user-select: none;
+            position: absolute; top: -20px; color: #fff; user-select: none;
             animation: snowfall linear infinite;
-            text-shadow: 0 0 5px rgba(255, 255, 255, .8);
+            text-shadow: 0 0 3px rgba(90, 110, 140, .85), 0 0 1px rgba(90, 110, 140, .9);
         }
-
+        html[data-theme="dark"] .snowflake { text-shadow: 0 0 6px rgba(255, 255, 255, .8); }
         @keyframes snowfall {
-
-            0% {
-                transform: translateY(-20px) translateX(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(50vh) translateX(35px) rotate(180deg);
-            }
-
-            100% {
-                transform: translateY(110vh) translateX(-25px) rotate(360deg);
-            }
-
+            0% { transform: translateY(-20px) translateX(0) rotate(0deg); }
+            50% { transform: translateY(50vh) translateX(35px) rotate(180deg); }
+            100% { transform: translateY(110vh) translateX(-25px) rotate(360deg); }
         }
 
-        /* --------------------------------
-           Christmas glow
-        -------------------------------- */
-
-        .christmas-glow {
-            background:
-                radial-gradient(circle at 80% 10%,
-                    rgba(201, 164, 92, .18),
-                    transparent 28%),
-                radial-gradient(circle at 10% 80%,
-                    rgba(139, 38, 53, .08),
-                    transparent 30%);
-        }
-
-        /* --------------------------------
-           Image hover
-        -------------------------------- */
-
-        .image-zoom {
-            transition: transform .8s ease;
-        }
-
-        .image-card:hover .image-zoom {
-            transform: scale(1.06);
-        }
-
-        /* --------------------------------
-           Gold line
-        -------------------------------- */
-
+        /* ---------- Gold line ---------- */
         .gold-line {
-            width: 70px;
-            height: 2px;
-            background: #C9A45C;
-        }
-
-        /* --------------------------------
-           Elegant underline
-        -------------------------------- */
-
-        .luxury-link {
+            width: 90px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
             position: relative;
         }
+        .gold-line::after {
+            content: '✦'; position: absolute; left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--gold); font-size: 11px; padding: 0 8px;
+        }
+        .gold-line.left { background: linear-gradient(90deg, var(--gold), transparent); }
+        .gold-line.left::after { display: none; }
 
+        /* ---------- Section backgrounds ---------- */
+        .bg-velvet {
+            background:
+                radial-gradient(ellipse at 12% 0%, rgba(232, 215, 220, .85), transparent 55%),
+                radial-gradient(ellipse at 95% 100%, rgba(216, 189, 123, .22), transparent 55%),
+                #FAF7F0;
+        }
+        .bg-ivory {
+            background-color: #FFFDF9;
+            background-image: radial-gradient(ellipse at 50% 0%, rgba(201, 164, 92, .14), transparent 55%);
+        }
+        .bg-emerald {
+            background:
+                radial-gradient(ellipse at 85% 0%, rgba(201, 164, 92, .18), transparent 50%),
+                linear-gradient(160deg, #EEF3EC 0%, #E1EBE2 55%, #EAF1EA 100%);
+        }
+        .bg-facts1 { background-color: #FFFDF9; background-image: radial-gradient(ellipse at 15% 0%, rgba(232, 215, 220, .7), transparent 55%); }
+        .bg-facts {
+            background:
+                radial-gradient(ellipse at 10% 0%, rgba(201, 164, 92, .16), transparent 45%),
+                linear-gradient(150deg, #F7E9EC 0%, #F1DCE1 50%, #F8EEEF 100%);
+        }
+        .bg-contact {
+            background:
+                radial-gradient(ellipse at 10% 0%, rgba(201, 164, 92, .16), transparent 45%),
+                linear-gradient(150deg, #F7E9EC 0%, #F1DCE1 50%, #F8EEEF 100%);
+        }
+        .bg-blog { background-color: #FAF7F0; background-image: radial-gradient(ellipse at 50% 100%, rgba(23, 59, 44, .08), transparent 60%); }
+        .bg-ruby {
+            background:
+                radial-gradient(ellipse at 50% 120%, rgba(0, 0, 0, .35), transparent 60%),
+                radial-gradient(ellipse at 10% 0%, rgba(201, 164, 92, .22), transparent 45%),
+                linear-gradient(135deg, #5a1826 0%, #7a2433 50%, #4a1320 100%);
+        }
+
+        html[data-theme="dark"] .bg-velvet,
+        html[data-theme="dark"] .bg-facts1,
+        html[data-theme="dark"] .bg-contact {
+            background-color: #0A0A0A;
+            background-image:
+                radial-gradient(ellipse at 15% 0%, rgba(139, 38, 53, .38), transparent 55%),
+                radial-gradient(ellipse at 90% 100%, rgba(23, 59, 44, .55), transparent 55%);
+        }
+        html[data-theme="dark"] .bg-ivory {
+            background-color: #0A0A0A;
+            background-image: radial-gradient(ellipse at 50% 0%, rgba(201, 164, 92, .12), transparent 55%);
+        }
+        html[data-theme="dark"] .bg-emerald {
+            background:
+                radial-gradient(ellipse at 80% 0%, rgba(201, 164, 92, .14), transparent 50%),
+                linear-gradient(160deg, #0f2b20 0%, #173B2C 55%, #0c1f17 100%);
+        }
+        html[data-theme="dark"] .bg-facts {
+            background:
+                radial-gradient(ellipse at 50% 120%, rgba(0, 0, 0, .45), transparent 60%),
+                radial-gradient(ellipse at 10% 0%, rgba(201, 164, 92, .18), transparent 45%),
+                linear-gradient(135deg, #4a1320 0%, #651D2A 50%, #3d0f19 100%);
+        }
+        html[data-theme="dark"] .bg-blog {
+            background-color: #0A0A0A;
+            background-image: radial-gradient(ellipse at 50% 100%, rgba(23, 59, 44, .55), transparent 60%);
+        }
+        html[data-theme="dark"] .bg-ruby {
+            background:
+                radial-gradient(ellipse at 50% 120%, rgba(0, 0, 0, .45), transparent 60%),
+                radial-gradient(ellipse at 10% 0%, rgba(201, 164, 92, .18), transparent 45%),
+                linear-gradient(135deg, #4a1320 0%, #651D2A 50%, #3d0f19 100%);
+        }
+
+        /* ---------- Twinkle lights ---------- */
+        .lights {
+            position: absolute; top: 0; left: 0; right: 0; height: 46px;
+            pointer-events: none; z-index: 5; overflow: hidden;
+        }
+        .lights svg { width: 100%; height: 46px; display: block; }
+        .bulb { animation: twinkle 2.6s ease-in-out infinite; transform-origin: center; }
+        .bulb:nth-child(3n) { animation-delay: .6s; }
+        .bulb:nth-child(3n+1) { animation-delay: 1.3s; }
+        .bulb:nth-child(4n) { animation-delay: 1.9s; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px currentColor); }
+            50% { opacity: .4; filter: drop-shadow(0 0 1px currentColor); }
+        }
+
+        /* ---------- Frames / images ---------- */
+        .gold-frame { position: relative; }
+        .gold-frame::before {
+            content: ''; position: absolute; inset: -14px;
+            border: 1px solid rgba(184, 145, 63, .6);
+            pointer-events: none; z-index: 2;
+        }
+        .gold-frame::after {
+            content: ''; position: absolute; inset: -7px;
+            border: 1px solid rgba(184, 145, 63, .28);
+            pointer-events: none; z-index: 2;
+        }
+        html[data-theme="dark"] .gold-frame::before { border-color: rgba(201, 164, 92, .55); }
+        html[data-theme="dark"] .gold-frame::after { border-color: rgba(201, 164, 92, .22); }
+
+        .image-zoom { transition: transform 1s cubic-bezier(.2, .7, .2, 1); }
+        .image-card:hover .image-zoom { transform: scale(1.07); }
+
+        /* ---------- Cards ---------- */
+        .lux-card {
+            background: linear-gradient(180deg, #ffffff, #FDF9F2);
+            border: 1px solid rgba(184, 145, 63, .38);
+            box-shadow: 0 18px 40px -26px rgba(101, 29, 42, .35);
+            transition: transform .5s ease, border-color .5s ease, box-shadow .5s ease;
+            position: relative;
+        }
+        .lux-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(184, 145, 63, .9);
+            box-shadow: 0 34px 60px -26px rgba(101, 29, 42, .45), 0 0 40px -14px rgba(201, 164, 92, .45);
+        }
+        html[data-theme="dark"] .lux-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .015));
+            border-color: rgba(201, 164, 92, .25);
+            box-shadow: none;
+        }
+        html[data-theme="dark"] .lux-card:hover {
+            border-color: rgba(201, 164, 92, .75);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .8), 0 0 40px -10px rgba(201, 164, 92, .25);
+        }
+        .lux-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 34px; height: 34px;
+            border-top: 2px solid var(--gold); border-left: 2px solid var(--gold);
+            z-index: 3; pointer-events: none;
+        }
+        .lux-card::after {
+            content: ''; position: absolute; bottom: 0; right: 0; width: 34px; height: 34px;
+            border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold);
+            z-index: 3; pointer-events: none;
+        }
+
+        /* ---------- Buttons ---------- */
+        .btn-gold {
+            display: inline-block; position: relative; overflow: hidden;
+            padding: 1.1rem 2.1rem;
+            font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500;
+            color: #fff;
+            background: linear-gradient(135deg, #8B2635, #651D2A);
+            border: 1px solid rgba(201, 164, 92, .7);
+            transition: all .4s ease;
+            box-shadow: 0 12px 28px -12px rgba(101, 29, 42, .65);
+        }
+        .btn-gold::before {
+            content: ''; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .3), transparent);
+            transform: skewX(-20deg); transition: left .7s ease;
+        }
+        .btn-gold:hover::before { left: 140%; }
+        .btn-gold:hover { background: linear-gradient(135deg, #1f4d39, #173B2C); border-color: var(--gold-soft); transform: translateY(-2px); }
+        html[data-theme="dark"] .btn-gold { box-shadow: 0 10px 30px -10px rgba(139, 38, 53, .7); }
+        html[data-theme="dark"] .btn-gold:hover { background: linear-gradient(135deg, #173B2C, #0f2b20); }
+
+        .btn-outline {
+            display: inline-block; padding: 1.1rem 2.1rem;
+            font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500;
+            color: var(--burgundy); border: 1px solid var(--gold);
+            background: rgba(255, 255, 255, .55);
+            transition: all .4s ease;
+        }
+        .btn-outline:hover { background: var(--burgundy); color: #fff; transform: translateY(-2px); }
+        html[data-theme="dark"] .btn-outline { color: #fff; background: transparent; backdrop-filter: blur(4px); }
+        html[data-theme="dark"] .btn-outline:hover { background: rgba(201, 164, 92, .15); }
+
+        .luxury-link { position: relative; }
         .luxury-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0;
-            height: 1px;
-            background: #C9A45C;
-            transition: width .3s ease;
+            content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1px;
+            background: var(--gold); transition: width .3s ease;
         }
+        .luxury-link:hover::after { width: 100%; }
 
-        .luxury-link:hover::after {
-            width: 100%;
+        /* ---------- Navbar ---------- */
+        #navbar { transition: all .35s ease; }
+        #navbar:not(.scrolled) {
+            background: linear-gradient(180deg, rgba(101, 29, 42, .97), rgba(101, 29, 42, .9));
+            border-bottom: 1px solid rgba(201, 164, 92, .45);
         }
-
-        /* --------------------------------
-           Navbar transition
-        -------------------------------- */
-
-        #navbar {
-            transition: all .3s ease;
-        }
-
         #navbar.scrolled {
-            background: rgba(0, 0, 0, 0.96);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 5px 25px rgba(0, 0, 0, .06);
+            position: fixed; top: 0 !important;
+            background: rgba(101, 29, 42, .94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(201, 164, 92, .5);
+            box-shadow: 0 10px 40px rgba(60, 10, 20, .3);
+        }
+        html[data-theme="dark"] #navbar:not(.scrolled) {
+            background: linear-gradient(180deg, rgba(0, 0, 0, .75), transparent);
+            border-bottom-color: transparent;
+        }
+        html[data-theme="dark"] #navbar.scrolled {
+            background: rgba(10, 10, 10, .88);
+            border-bottom-color: rgba(201, 164, 92, .25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .5);
+        }
+        #navbar.scrolled .nav-row { height: 76px; }
+        .nav-row { transition: height .35s ease; }
+
+        .nav-link { position: relative; color: #fff; }
+        .nav-link::after {
+            content: ''; position: absolute; left: 50%; bottom: -8px; width: 0; height: 1px;
+            background: var(--champagne); transition: all .3s ease; transform: translateX(-50%);
+        }
+        .nav-link:hover { color: var(--champagne); }
+        .nav-link:hover::after { width: 100%; }
+
+        #mobile-menu { display: none; background: rgba(101, 29, 42, .98); border-top: 1px solid rgba(201, 164, 92, .4); backdrop-filter: blur(12px); }
+        html[data-theme="dark"] #mobile-menu { background: rgba(10, 10, 10, .95); border-top-color: rgba(201, 164, 92, .3); }
+        #mobile-menu.active { display: block; }
+
+        /* ---------- Theme switch ---------- */
+        .theme-switch {
+            position: relative; flex-shrink: 0;
+            width: 48px; height: 26px; border-radius: 9999px;
+            border: 1px solid rgba(231, 210, 154, .75);
+            background: linear-gradient(135deg, #f7e7b8, #e8c775);
+            cursor: pointer; transition: background .5s ease, border-color .5s ease;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, .25);
+        }
+        .theme-switch .knob {
+            position: absolute; top: 2px; left: 2px;
+            width: 20px; height: 20px; border-radius: 9999px;
+            background: #fff; color: #B8913F;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px;
+            transition: transform .5s cubic-bezier(.2, .8, .2, 1), background .5s ease, color .5s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+        }
+        html[data-theme="dark"] .theme-switch { background: linear-gradient(135deg, #0f2b20, #173B2C); border-color: rgba(201, 164, 92, .6); }
+        html[data-theme="dark"] .theme-switch .knob { transform: translateX(22px); background: #0A0A0A; color: #E7D29A; }
+        .theme-switch .knob .k-moon { display: none; }
+        html[data-theme="dark"] .theme-switch .knob .k-moon { display: inline; }
+        html[data-theme="dark"] .theme-switch .knob .k-sun { display: none; }
+
+        /* ---------- Hero ---------- */
+        #hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background:
+                radial-gradient(ellipse at 78% 12%, rgba(201, 164, 92, .35), transparent 42%),
+                radial-gradient(ellipse at 5% 90%, rgba(139, 38, 53, .16), transparent 48%),
+                radial-gradient(ellipse at 50% 50%, #FFFDF9 0%, #F6EDE4 80%);
+        }
+        #hero-bg img {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: .12; mix-blend-mode: multiply;
+        }
+        #hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(90deg, rgba(250, 247, 240, .75), rgba(250, 247, 240, .2) 60%, rgba(250, 247, 240, .45));
+        }
+        html[data-theme="dark"] #hero-bg {
+            background:
+                radial-gradient(ellipse at 75% 15%, rgba(201, 164, 92, .22), transparent 40%),
+                radial-gradient(ellipse at 5% 90%, rgba(139, 38, 53, .45), transparent 45%),
+                radial-gradient(ellipse at 50% 50%, #1a0a0f 0%, #0A0A0A 75%);
+        }
+        html[data-theme="dark"] #hero-bg img { opacity: .28; mix-blend-mode: screen; }
+        html[data-theme="dark"] #hero-bg::after {
+            background: linear-gradient(90deg, rgba(10, 10, 10, .85), rgba(10, 10, 10, .25) 60%, rgba(10, 10, 10, .6));
         }
 
-        /* --------------------------------
-           Mobile menu
-        -------------------------------- */
-
-        #mobile-menu {
-            display: none;
+        .orb {
+            position: absolute; border-radius: 9999px; filter: blur(70px); opacity: var(--orb-o);
+            animation: floaty 12s ease-in-out infinite;
+        }
+        .orb-gold { background: var(--orb-gold); }
+        @keyframes floaty {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.08); }
         }
 
-        #mobile-menu.active {
-            display: block;
+        .hero-rise { animation: rise 1.3s cubic-bezier(.2, .7, .2, 1) both; }
+        .hero-rise.d2 { animation-delay: .25s; }
+        .hero-rise.d3 { animation-delay: .5s; }
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(34px); }
+            to { opacity: 1; transform: none; }
         }
 
-        /* --------------------------------
-           Gif Background
-           */
-        #hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('download.gif');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1;
-            /* Adjust the opacity as needed */
-            z-index: -1;
-            /* Ensure it is behind the content */
+        .spin-slow { animation: spin 40s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .seal {
+            position: absolute; z-index: 10;
+            width: 130px; height: 130px;
+            display: flex; align-items: center; justify-content: center;
+            filter: drop-shadow(0 14px 18px rgba(101, 29, 42, .3));
         }
+
+        /* ---------- Reveal on scroll ---------- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s cubic-bezier(.2, .7, .2, 1); }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ---------- Marquee ---------- */
+        .marquee { display: flex; width: max-content; animation: scroll 38s linear infinite; }
+        @keyframes scroll { to { transform: translateX(-50%); } }
+
+        /* ---------- Feature numerals ---------- */
+        .big-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5.5rem; line-height: 1; font-weight: 500; font-style: italic;
+            background: linear-gradient(180deg, rgba(139, 38, 53, .95), rgba(201, 164, 92, .15));
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        html[data-theme="dark"] .big-num {
+            background-image: linear-gradient(180deg, rgba(201, 164, 92, .9), rgba(201, 164, 92, .05));
+        }
+
+        .ornament-ring {
+            width: 74px; height: 74px; border-radius: 9999px;
+            border: 1px solid rgba(184, 145, 63, .75);
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .ornament-ring::before {
+            content: ''; position: absolute; inset: 5px; border-radius: 9999px;
+            border: 1px dashed rgba(184, 145, 63, .45);
+        }
+        html[data-theme="dark"] .ornament-ring { border-color: rgba(201, 164, 92, .6); }
+        html[data-theme="dark"] .ornament-ring::before { border-color: rgba(201, 164, 92, .35); }
+
+        /* ---------- Form ---------- */
+        .field {
+            width: 100%; background: transparent;
+            border: 0; border-bottom: 1px solid rgba(43, 19, 24, .28);
+            padding: .75rem 0; color: var(--t-head); outline: none; transition: border-color .3s;
+        }
+        .field:focus { border-bottom-color: var(--ruby); }
+        select.field option { background: #fff; color: #2B1318; }
+        .field-label {
+            display: block; font-size: .65rem; letter-spacing: .22em; text-transform: uppercase;
+            color: var(--t-accent); margin-bottom: .1rem;
+        }
+        html[data-theme="dark"] .field { border-bottom-color: rgba(255, 255, 255, .22); }
+        html[data-theme="dark"] .field:focus { border-bottom-color: var(--gold); }
+        html[data-theme="dark"] select.field option { background: #111; color: #fff; }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--champagne); outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .reveal { opacity: 1; transform: none; }
+            html { scroll-behavior: auto; }
+        }
+
     </style>
 </head>
-
 
 <body>
 
     <!-- =====================================================
      SNOW
 ===================================================== -->
-
-    <div id="snow-container"></div>
+    <div id="snow-container" aria-hidden="true"></div>
 
 
     <!-- =====================================================
      CHRISTMAS ANNOUNCEMENT
 ===================================================== -->
-
-    <div class="bg-forest text-white text-center py-2.5 px-4">
-
+    <div class="relative bg-forest text-white text-center py-2.5 px-4 border-b border-gold/30"
+        style="background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px),linear-gradient(90deg,#0f2b20,#173B2C,#0f2b20);">
         <p class="text-[10px] md:text-xs uppercase tracking-[0.3em]">
             <span class="text-champagne">✦</span>
-
             A Season of Elegance · Love · Giving
-
             <span class="text-champagne">✦</span>
         </p>
-
     </div>
 
 
     <!-- =====================================================
      NAVBAR
 ===================================================== -->
-
-    <header id="navbar" class="bg-black absolute top-[38px] left-0 right-0 z-50">
-
+    <header id="navbar" class="absolute top-[38px] left-0 right-0 z-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
-            <div class="h-24 flex items-center justify-between">
-
-                <!-- Logo -->
+            <div class="nav-row h-24 flex items-center justify-between">
 
                 <a href="#" class="relative">
-
                     <img src="https://laevolution.com/img/logo1.png" alt="ELARA by LA Evolution"
                         class="h-12 md:h-14 w-auto">
-
-                    <!-- Ornament -->
-
-                    <span class="absolute -top-4 -right-5
-                           text-gold text-xl">
-                        ✦
-                    </span>
-
+                    <span class="absolute -top-4 -right-5 text-gold text-xl">✦</span>
                 </a>
 
-
-                <!-- Desktop Navigation -->
-
-                <nav class="hidden lg:flex items-center gap-9">
-
-                    <a href="#about" class="text-sm tracking-wide text-white hover:text-burgundy transition">
-                        About Us
-                    </a>
-
-                    <a href="#collections" class="text-sm tracking-wide text-white hover:text-burgundy transition">
-                        Our Collections
-                    </a>
-
-                    <a href="#features" class="text-sm tracking-wide text-white hover:text-burgundy transition">
-                        Why ELARA
-                    </a>
-
-                    <a href="#blog" class="text-sm tracking-wide text-white hover:text-burgundy transition">
-                        Blogs
-                    </a>
-
-                    <a href="#contact" class="px-6 py-3 bg-burgundy text-white text-xs
-                           uppercase tracking-widest
-                           hover:bg-forest transition">
-                        Enquire
-                    </a>
-
+                <div class="flex items-center gap-6 lg:gap-10">
+                <nav class="hidden lg:flex items-center gap-10">
+                    <a href="#about" class="nav-link text-sm tracking-wide transition">About Us</a>
+                    <a href="#collections" class="nav-link text-sm tracking-wide transition">Our Collections</a>
+                    <a href="#features" class="nav-link text-sm tracking-wide transition">Why ELARA</a>
+                    <a href="#blog" class="nav-link text-sm tracking-wide transition">Blogs</a>
+                    <a href="#contact" class="btn-gold !py-3 !px-6">Enquire</a>
                 </nav>
 
-
-                <!-- Mobile button -->
-
-                <button id="menu-button" class="lg:hidden text-burgundy" aria-label="Open menu">
-
+                <button id="theme-toggle" type="button" class="theme-switch" role="switch" aria-checked="false" aria-label="Switch between light and dark mode" title="Light / Dark">
+                    <span class="knob"><i class="fas fa-sun k-sun" aria-hidden="true"></i><i class="fas fa-moon k-moon" aria-hidden="true"></i></span>
+                </button>
+                    <button id="menu-button" class="lg:hidden text-gold" aria-label="Open menu">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-7 h-7">
-
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-
                     </svg>
-
                 </button>
-
-            </div>
-
-
-            <!-- Mobile Menu -->
-
-            <div id="mobile-menu" class="lg:hidden bg-white/95 backdrop-blur-md
-                   border-t border-gold/20">
-
-                <div class="px-5 py-6 space-y-5">
-
-                    <a href="#about" class="block text-gray-700">
-                        About Us
-                    </a>
-
-                    <a href="#collections" class="block text-gray-700">
-                        Our Collections
-                    </a>
-
-                    <a href="#features" class="block text-gray-700">
-                        Why ELARA
-                    </a>
-
-                    <a href="#blog" class="block text-gray-700">
-                        Blogs
-                    </a>
-
-                    <a href="#contact" class="inline-block bg-burgundy
-                           text-white px-6 py-3">
-                        Enquire
-                    </a>
-
                 </div>
-
             </div>
 
+            <div id="mobile-menu" class="lg:hidden backdrop-blur-md">
+                <div class="px-5 py-6 space-y-5">
+                    <a href="#about" class="block text-white/90">About Us</a>
+                    <a href="#collections" class="block text-white/90">Our Collections</a>
+                    <a href="#features" class="block text-white/90">Why ELARA</a>
+                    <a href="#blog" class="block text-white/90">Blogs</a>
+                    <a href="#contact" class="inline-block bg-burgundy text-white px-6 py-3 border border-gold/50">Enquire</a>
+                </div>
+            </div>
         </div>
-
     </header>
 
 
     <!-- =====================================================
      HERO
 ===================================================== -->
+    <section class="relative min-h-screen flex items-center overflow-hidden hero-sec">
 
-    <section class="relative min-h-screen
-           flex items-center overflow-hidden
-           bg-black christmas-glow">
+        <div id="hero-bg">
+            <img src="download.gif" alt="" onerror="this.style.display='none'">
+        </div>
+
+        <div class="orb w-72 h-72 bg-burgundy -left-20 top-40"></div>
+        <div class="orb w-80 h-80 orb-gold right-0 -top-10" style="animation-delay:-4s"></div>
+        <div class="orb w-64 h-64 bg-forest bottom-0 left-1/3" style="animation-delay:-7s"></div>
+
+        <!-- String lights -->
+        <div class="lights" style="top:130px" aria-hidden="true">
+            <svg viewBox="0 0 1440 46" preserveAspectRatio="none">
+                <path d="M0 6 Q 90 40 180 10 T 360 10 T 540 10 T 720 10 T 900 10 T 1080 10 T 1260 10 T 1440 8"
+                    fill="none" class="lights-string" stroke-width="1.5" />
+                <g>
+                    <circle class="bulb" cx="60" cy="24" r="5" fill="#d9534f" style="color:#d9534f" />
+                    <circle class="bulb" cx="150" cy="22" r="5" fill="#E7D29A" style="color:#E7D29A" />
+                    <circle class="bulb" cx="270" cy="20" r="5" fill="#3f9d6b" style="color:#3f9d6b" />
+                    <circle class="bulb" cx="390" cy="22" r="5" fill="#d9534f" style="color:#d9534f" />
+                    <circle class="bulb" cx="480" cy="20" r="5" fill="#E7D29A" style="color:#E7D29A" />
+                    <circle class="bulb" cx="600" cy="22" r="5" fill="#3f9d6b" style="color:#3f9d6b" />
+                    <circle class="bulb" cx="720" cy="22" r="5" fill="#d9534f" style="color:#d9534f" />
+                    <circle class="bulb" cx="840" cy="20" r="5" fill="#E7D29A" style="color:#E7D29A" />
+                    <circle class="bulb" cx="960" cy="22" r="5" fill="#3f9d6b" style="color:#3f9d6b" />
+                    <circle class="bulb" cx="1080" cy="22" r="5" fill="#d9534f" style="color:#d9534f" />
+                    <circle class="bulb" cx="1190" cy="20" r="5" fill="#E7D29A" style="color:#E7D29A" />
+                    <circle class="bulb" cx="1300" cy="22" r="5" fill="#3f9d6b" style="color:#3f9d6b" />
+                    <circle class="bulb" cx="1390" cy="18" r="5" fill="#d9534f" style="color:#d9534f" />
+                </g>
+            </svg>
+        </div>
 
         <div id="hero" class="relative z-10 w-full">
+            <div class="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full border border-gold/10"></div>
+            <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full border border-red/20"></div>
 
-            <!-- Decorative circles -->
-
-            <div class="absolute -top-48 -right-48
-               w-[600px] h-[600px]
-               rounded-full
-               border border-gold/10"></div>
-
-            <div class="absolute -bottom-40 -left-40
-               w-[500px] h-[500px]
-               rounded-full
-               border border-red/10"></div>
-
-
-            <div class="max-w-7xl mx-auto
-               px-6 lg:px-10
-               pt-36 pb-20
-               w-full">
-
-                <div class="grid lg:grid-cols-2
-                   gap-14 lg:gap-20
-                   items-center">
+            <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-40 pb-24 w-full">
+                <div class="grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
 
                     <!-- Hero text -->
-
-
-
                     <div class="relative z-10">
 
-                        <p class="uppercase tracking-[0.35em]
-                           text-white text-xs md:text-sm
-                           mb-6">
+                        <p class="hero-rise uppercase tracking-[0.35em] t-accent text-xs md:text-sm mb-7 flex items-center gap-4">
+                            <span class="inline-block w-10 h-px bg-gold"></span>
                             The Christmas Edit
                         </p>
 
-
-                        <h3 class="font-serif
-                           text-4xl md:text-4xl lg:text-4xl
-                           leading-[.88]
-                           text-white">
-
+                        <h3 class="hero-rise d2 font-serif text-5xl md:text-6xl lg:text-7xl leading-[.98] t-head font-medium">
                             ELARA - A Wellness
-
-                            <span class="block italic text-gold">
-                                & Lifestyle Brand <span class="text-gold text-xl">
-                                    ✦
-                                </span>
+                            <span class="block italic gold-text pb-2">
+                                &amp; Lifestyle Brand <span class="text-gold text-2xl align-super" style="-webkit-text-fill-color:#C9A45C">✦</span>
                             </span>
-
-
                         </h3>
 
+                        <div class="gold-line left my-9"></div>
 
-                        <div class="gold-line my-8"></div>
-
-
-                        <p class="text-white
-                           leading-relaxed
-                           max-w-xl
-                           text-base md:text-lg">
+                        <p class="hero-rise d3 t-body leading-relaxed max-w-xl text-base md:text-lg font-light">
                             Pure, Ethical, and Beautiful. Just Like You. Luxury for Every Woman, Beauty without Limits.
                         </p>
 
-
-                        <div class="mt-9
-                           flex flex-wrap gap-4">
-
-                            <a href="#collections" class="px-7 py-4
-                               bg-burgundy
-                               text-white
-                               text-xs uppercase
-                               tracking-widest
-                               hover:bg-forest
-                               transition">
-                                Explore Collection
-                            </a>
-
-
-                            <a href="#about" class="px-7 py-4
-                               border border-gold
-                               text-white
-                               text-xs uppercase
-                               tracking-widest
-                               hover:bg-gold/10
-                               transition">
-                                Discover ELARA
-                            </a>
-
+                        <div class="hero-rise d3 mt-10 flex flex-wrap gap-4">
+                            <a href="#collections" class="btn-gold">Explore Collection</a>
+                            <a href="#about" class="btn-outline">Discover ELARA</a>
                         </div>
-
-
-                        <!-- Small decorative message -->
-
-                        <div class="mt-10 flex items-center gap-4">
-
-                            <!-- <span class="text-gold text-xl">
-                        ✦
-                    </span> -->
-
-                            <!-- <p class="text-xs text-gray-500">
-                        Pure · Ethical · Beautiful
-                    </p> -->
-
-                        </div>
-
                     </div>
-
 
                     <!-- Hero image -->
+                    <div class="relative hero-rise d2 lg:pl-6">
 
-                    <div class="relative">
+                        <!-- Rotating wreath seal -->
+                        <div class="seal -top-10 -left-6 md:-left-12">
+                            <svg viewBox="0 0 200 200" class="absolute inset-0 w-full h-full spin-slow">
+                                <defs>
+                                    <path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+                                </defs>
+                                <circle cx="100" cy="100" r="96" class="seal-bg" stroke="#C9A45C" stroke-width="1.2" />
+                                <circle cx="100" cy="100" r="64" fill="none" stroke="#C9A45C" stroke-width=".6" stroke-dasharray="2 4" />
+                                <text fill="#E7D29A" font-size="14" letter-spacing="5" font-family="Montserrat">
+                                    <textPath href="#circ">MERRY CHRISTMAS ✦ HAPPY NEW YEAR ✦</textPath>
+                                </text>
+                            </svg>
+                            <span class="relative text-3xl text-champagne">❄</span>
+                        </div>
 
-                        <div class="absolute
-                           inset-0
-                           border border-gold/50
-                           translate-x-5
-                           translate-y-5"></div>
-
-
-                        <div class="relative overflow-hidden">
-
-                            <img src="hero.jpg"
-                                alt="ELARA Christmas Collection" class="w-full
-                               h-[560px] md:h-[650px]
-                               object-cover">
-                            <!-- <img src="https://images.unsplash.com/photo-1611601112271-c0425f0840d1?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
-                            alt="ELARA Christmas Collection" class="w-full
-                               h-[560px] md:h-[600px]
-                               object-cover"> -->
-
-
-                            <!-- Image overlay -->
-
-                            <div class="absolute inset-0
-                               bg-gradient-to-t
-                               from-burgundy/40
-                               via-transparent
-                               to-transparent"></div>
-
-
-                            <!-- Campaign badge -->
-
-                            <!-- <div class="absolute
-                               bottom-7 left-7
-                               bg-white/90
-                               backdrop-blur-md
-                               px-6 py-5">
-
-                            <p class="text-[10px]
-                                   uppercase
-                                   tracking-[.25em]
-                                   text-red">
-                                Christmas 2026
-                            </p>
-
-                            <p class="font-serif
-                                   text-2xl
-                                   text-burgundy
-                                   mt-1">
-                                Beauty & Giving
-                            </p>
-
-                        </div> -->
-
+                        <div class="gold-frame">
+                            <div class="relative overflow-hidden shadow-hero">
+                                <img src="hero.jpg"
+                                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=1000&q=80'"
+                                    alt="ELARA Christmas Collection"
+                                    class="w-full h-[560px] md:h-[650px] object-cover">
+                                <div class="absolute inset-0 ov-hero"></div>
+                            </div>
                         </div>
 
                     </div>
 
-
-
-
                 </div>
-
             </div>
         </div>
+
+        <!-- Fade into next section -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-burgundy z-10"></div>
     </section>
 
 
     <!-- =====================================================
      CHRISTMAS INTRO
 ===================================================== -->
+    <section class="on-dark relative bg-ruby text-white py-24 overflow-hidden">
 
-    <section class="bg-burgundy text-white py-20">
+        <div class="absolute inset-0 opacity-[.07]"
+            style="background-image:radial-gradient(circle,#fff 1px,transparent 1.5px);background-size:26px 26px"></div>
+        <span class="absolute -left-6 top-6 text-[14rem] leading-none text-gold/10 font-serif select-none">❄</span>
+        <span class="absolute -right-6 bottom-0 text-[14rem] leading-none text-gold/10 font-serif select-none">✦</span>
 
-        <div class="max-w-4xl mx-auto
-               px-6 text-center">
+        <div class="relative max-w-4xl mx-auto px-6 lg:px-10 text-center reveal">
 
-            <span class="text-gold text-2xl">
-                ✦
-            </span>
-
-
-            <p class="uppercase tracking-[.3em]
-                   text-champagne text-xs mt-4">
-                The ELARA Christmas Edit
+            <p class="uppercase tracking-[.35em] text-champagne text-xs">
+                ✦ The ELARA Christmas Edit ✦
             </p>
 
-
-            <h2 class="font-serif
-                   text-4xl md:text-6xl
-                   mt-5">
+            <h2 class="font-serif text-5xl md:text-7xl leading-tight mt-6 font-medium">
                 Give the Gift of
-                <span class="italic text-gold">
-                    Beauty
-                </span>
+                <span class="italic gold-text">Beauty</span>
             </h2>
 
+            <div class="gold-line mx-auto my-8"></div>
 
-            <p class="mt-6
-                   text-white/70
-                   leading-relaxed
-                   max-w-2xl mx-auto">
+            <p class="text-white/80 leading-relaxed max-w-2xl mx-auto text-lg font-light">
                 This Christmas, celebrate the women in your life
                 with thoughtful beauty and self-care essentials
                 created to inspire confidence, comfort and joy.
             </p>
 
         </div>
-
     </section>
+
+
+    <!-- =====================================================
+     MARQUEE RIBBON
+===================================================== -->
+    <div class="relative marquee-bar py-4 overflow-hidden" aria-hidden="true">
+        <div class="marquee t-accent font-serif italic text-2xl whitespace-nowrap">
+            <div class="flex gap-10 pr-10">
+                <span>Pure</span><span class="text-gold">✦</span><span>Ethical</span><span class="text-gold">✦</span><span>Beautiful</span><span class="text-gold">✦</span><span>Luxury for Every Woman</span><span class="text-gold">✦</span><span>Beauty without Limits</span><span class="text-gold">✦</span>
+                <span>Pure</span><span class="text-gold">✦</span><span>Ethical</span><span class="text-gold">✦</span><span>Beautiful</span><span class="text-gold">✦</span><span>Luxury for Every Woman</span><span class="text-gold">✦</span><span>Beauty without Limits</span><span class="text-gold">✦</span>
+            </div>
+            <div class="flex gap-10 pr-10">
+                <span>Pure</span><span class="text-gold">✦</span><span>Ethical</span><span class="text-gold">✦</span><span>Beautiful</span><span class="text-gold">✦</span><span>Luxury for Every Woman</span><span class="text-gold">✦</span><span>Beauty without Limits</span><span class="text-gold">✦</span>
+                <span>Pure</span><span class="text-gold">✦</span><span>Ethical</span><span class="text-gold">✦</span><span>Beautiful</span><span class="text-gold">✦</span><span>Luxury for Every Woman</span><span class="text-gold">✦</span><span>Beauty without Limits</span><span class="text-gold">✦</span>
+            </div>
+        </div>
+    </div>
 
 
     <!-- =====================================================
      ABOUT
 ===================================================== -->
+    <section id="about" class="relative py-24 lg:py-36 bg-velvet overflow-hidden">
 
-    <section id="about" class="py-24 lg:py-32
-           bg-black">
-
-        <div class="max-w-7xl mx-auto
-               px-6 lg:px-10">
-
-            <div class="grid lg:grid-cols-2
-                   gap-16 items-center">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
 
                 <!-- Image -->
-
-                <div class="relative image-card">
-
-                    <div class="absolute
-                           -left-5 -bottom-5
-                           w-full h-full
-                           border border-gold/40"></div>
-
-
-                    <div class="relative overflow-hidden">
-
-                        <img src="https://laevolution.com/img/about.png" alt="About ELARA" class="image-zoom
-                               w-full
-                               h-[620px] object-contain
-                               md:object-cover">
-
+                <div class="relative image-card reveal">
+                    <div class="gold-frame">
+                        <div class="relative overflow-hidden img-wrap">
+                            <img src="https://laevolution.com/img/about.png" alt="About ELARA"
+                                class="image-zoom w-full h-[620px] object-contain md:object-cover">
+                            <div class="absolute inset-0 ov-about"></div>
+                        </div>
                     </div>
-
+                    <!-- Floating gift-tag -->
+                    <div class="hidden md:flex absolute -bottom-10 -right-8 z-10 w-36 h-36 rounded-full bg-burgundy border border-gold/60 items-center justify-center text-center shadow-2xl">
+                        <div>
+                            <p class="t-accent text-2xl">✦</p>
+                            <p class="font-serif italic text-xl leading-tight text-white">Pure.<br>Ethical.<br>Beautiful.</p>
+                        </div>
+                    </div>
                 </div>
 
-
                 <!-- Text -->
+                <div class="reveal">
+                    <p class="uppercase tracking-[.3em] t-accent text-xs">About ELARA</p>
 
-                <div>
+                    <div class="gold-line left my-7"></div>
 
-                    <p class="uppercase
-                           tracking-[.3em]
-                           text-white text-xs">
-                        About ELARA
-                    </p>
-
-                    <div class="gold-line my-7"></div>
-
-
-                    <p class="text-white leading-8">
-
+                    <p class="t-body leading-8 text-[1.02rem] font-light first-letter:font-serif first-letter:text-7xl first-letter:text-gold first-letter:float-left first-letter:leading-[.8] first-letter:pr-3 first-letter:pt-2">
                         Elara by LA Evolution is more than a beauty brand—it's a celebration of every woman’s right to
                         experience luxury. We believe elegance shouldn't be reserved for a few but accessible to all,
                         regardless of age or background. Elara was created with a vision to redefine sophistication by
                         blending timeless beauty with modern affordability—so every woman can feel radiant and empowered
                         without compromise.
                     </p>
-                    <p class="text-white leading-8 mt-5">
+                    <p class="t-body leading-8 mt-5 font-light">
                         Crafted for today’s confident, conscious woman, Elara products are thoughtfully formulated using
                         high-quality, organic ingredients that nourish, protect, and enhance. From skincare to self-care
                         essentials, each creation is an invitation to indulge in moments of self-love and
                         refinement—infused with both science and soul.
                     </p>
-                    <p class="text-white leading-8 mt-5">
+                    <p class="t-body leading-8 mt-5 font-light">
                         Rooted in the values of sustainability and integrity, Elara is committed to ethical sourcing,
                         eco-conscious practices, and cruelty-free beauty. Because we believe in making the world better
                         while making you feel beautiful.
-                        <span class="font-bold">Pure. Ethical. and Beautiful. Just Like You. Luxury for Every Woman.
+                        <span class="font-semibold t-accent">Pure. Ethical. and Beautiful. Just Like You. Luxury for Every Woman.
                             Beauty without Limits.</span>
                     </p>
 
-
-                    <a href="#facts1" class="mt-8 inline-block px-7 py-4
-                               bg-burgundy
-                               text-white
-                               text-xs uppercase
-                               tracking-widest
-                               hover:bg-forest
-                               transition">
-                        Key Features
-                    </a>
-
-
+                    <a href="#facts1" class="btn-gold mt-10">Key Features</a>
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
     <!-- =====================================================
      COLLECTIONS
 ===================================================== -->
+    <section id="collections" class="relative py-24 lg:py-36 bg-ivory overflow-hidden">
 
-    <section id="collections" class="py-24 lg:py-32
-           bg-dark">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-        <div class="max-w-7xl mx-auto
-               px-6 lg:px-10">
-
-            <!-- Heading -->
-
-            <div class="text-center max-w-2xl mx-auto">
-
-
-
-                <h2 class="font-serif
-                       text-5xl md:text-6xl
-                       text-white
-                       mt-4">
-                    Our Luxurious Collections
+            <div class="text-center max-w-2xl mx-auto reveal">
+                <p class="text-gold text-xl mb-2">❄ ✦ ❄</p>
+                <h2 class="font-serif text-5xl md:text-7xl t-head mt-4 font-medium">
+                    Our <span class="italic gold-text">Luxurious</span> Collections
                 </h2>
-
-
-                <div class="gold-line mx-auto my-6"></div>
-
-
-                <p class="text-gray-500 leading-relaxed">
+                <div class="gold-line mx-auto my-8"></div>
+                <p class="t-body leading-relaxed text-lg font-light">
                     Thoughtfully selected pieces for the women
                     who make every season beautiful.
                 </p>
-
             </div>
 
-
-            <!-- Cards -->
-
-            <div class="grid md:grid-cols-2
-                   lg:grid-cols-3
-                   gap-8
-                   mt-16">
-
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
 
                 <!-- Jewelry -->
-
-                <article class="group
-                       image-card
-                       bg-dark
-                       border border-gold/20">
-
+                <article class="group image-card lux-card reveal">
                     <div class="relative overflow-hidden">
-
-                        <img src="https://laevolution.com/img/jew.jpg" alt="Exquisite Jewelry" class="image-zoom
-                               w-full
-                               h-[300px]
-                               object-cover">
-
-
-                        <span class="absolute
-                               top-5 left-5
-                               bg-burgundy
-                               text-white
-                               px-4 py-2
-                               text-[10px]
-                               uppercase
-                               tracking-widest">
+                        <img src="https://laevolution.com/img/jew.jpg" alt="Exquisite Jewelry"
+                            class="image-zoom w-full h-[340px] object-cover">
+                        <div class="absolute inset-0 ov-coll"></div>
+                        <span class="absolute top-5 left-5 bg-burgundy text-white px-4 py-2 text-[10px] uppercase tracking-widest border border-gold/50">
                             Coming Soon
                         </span>
-
+                        <span class="absolute bottom-4 right-5 text-gold text-xl">✦</span>
                     </div>
-
-
-                    <div class="p-7">
-
-                        <p class="text-gold
-                               text-[10px]
-                               uppercase
-                               tracking-widest">
-                            The Gift Edit
-                        </p>
-
-
-                        <h3 class="font-serif
-                               text-3xl
-                               text-white
-                               mt-2">
-                            Exquisite Jewelry
-                        </h3>
-
-
-                        <p class="text-gray-500
-                               leading-relaxed
-                               mt-3">
+                    <div class="p-8">
+                        <p class="text-gold text-[10px] uppercase tracking-widest">The Gift Edit</p>
+                        <h3 class="font-serif text-3xl t-head mt-2 font-medium">Exquisite Jewelry</h3>
+                        <p class="t-body leading-relaxed mt-3 font-light">
                             Timeless elegance and dazzling beauty
                             for every celebration.
                         </p>
-
-
-                        <a href="#contact" class="inline-block
-                               mt-6
-                               text-white
-                               text-xs
-                               uppercase
-                               tracking-widest
-                               luxury-link">
+                        <a href="#contact" class="inline-block mt-6 t-accent text-xs uppercase tracking-widest luxury-link">
                             Make Enquiry →
                         </a>
-
                     </div>
-
                 </article>
 
-
                 <!-- Pads -->
-
-                <article class="group
-                       image-card
-                       bg-dark
-                       border border-gold/20">
-
+                <article class="group image-card lux-card reveal" style="transition-delay:.12s">
                     <div class="relative overflow-hidden">
-
-                        <img src="elarapad.jpg" alt="Premium Sanitary Pads" class="image-zoom
-                               w-full
-                               h-[300px]
-                               object-cover">
-
-
-                        <span class="absolute
-                               top-5 left-5
-                               bg-forest
-                               text-white
-                               px-4 py-2
-                               text-[10px]
-                               uppercase
-                               tracking-widest">
+                        <img src="elarapad.jpg" alt="Premium Sanitary Pads"
+                            class="image-zoom w-full h-[340px] object-cover">
+                        <div class="absolute inset-0 ov-coll"></div>
+                        <span class="absolute top-5 left-5 bg-forest text-white px-4 py-2 text-[10px] uppercase tracking-widest border border-gold/50">
                             New
                         </span>
-
+                        <span class="absolute bottom-4 right-5 text-gold text-xl">✦</span>
                     </div>
-
-
-                    <div class="p-7">
-
-                        <p class="text-gold
-                               text-[10px]
-                               uppercase
-                               tracking-widest">
-                            Everyday Luxury
-                        </p>
-
-
-                        <h3 class="font-serif
-                               text-3xl
-                               text-white
-                               mt-2">
-                            Premium Sanitary Pads
-                        </h3>
-
-
-                        <p class="text-gray-500
-                               leading-relaxed
-                               mt-3">
+                    <div class="p-8">
+                        <p class="text-gold text-[10px] uppercase tracking-widest">Everyday Luxury</p>
+                        <h3 class="font-serif text-3xl t-head mt-2 font-medium">Premium Sanitary Pads</h3>
+                        <p class="t-body leading-relaxed mt-3 font-light">
                             Luxury comfort and protection
                             for every woman.
                         </p>
-
-
-                        <a href="#contact" class="inline-block
-                               mt-6
-                               text-white
-                               text-xs
-                               uppercase
-                               tracking-widest
-                               luxury-link">
+                        <a href="#contact" class="inline-block mt-6 t-accent text-xs uppercase tracking-widest luxury-link">
                             Make Enquiry →
                         </a>
-
                     </div>
-
                 </article>
 
-
                 <!-- Lipstick -->
-
-                <article class="group
-                       image-card
-                       bg-dark
-                       border border-gold/20">
-
+                <article class="group image-card lux-card reveal" style="transition-delay:.24s">
                     <div class="relative overflow-hidden">
-
-                        <img src="https://laevolution.com/img/lipstick.jpg" alt="Luxury Lipstick" class="image-zoom
-                               w-full
-                               h-[300px]
-                               object-cover">
-
-
-                        <span class="absolute
-                               top-5 left-5
-                               bg-red
-                               text-white
-                               px-4 py-2
-                               text-[10px]
-                               uppercase
-                               tracking-widest">
+                        <img src="https://laevolution.com/img/lipstick.jpg" alt="Luxury Lipstick"
+                            class="image-zoom w-full h-[340px] object-cover">
+                        <div class="absolute inset-0 ov-coll"></div>
+                        <span class="absolute top-5 left-5 bg-burgundy text-white px-4 py-2 text-[10px] uppercase tracking-widest border border-gold/50">
                             Coming Soon
                         </span>
-
+                        <span class="absolute bottom-4 right-5 text-gold text-xl">✦</span>
                     </div>
-
-
-                    <div class="p-7">
-
-                        <p class="text-gold
-                               text-[10px]
-                               uppercase
-                               tracking-widest">
-                            The Beauty Edit
-                        </p>
-
-
-                        <h3 class="font-serif
-                               text-3xl
-                               text-white
-                               mt-2">
-                            Luxury Lipstick
-                        </h3>
-
-
-                        <p class="text-gray-500
-                               leading-relaxed
-                               mt-3">
+                    <div class="p-8">
+                        <p class="text-gold text-[10px] uppercase tracking-widest">The Beauty Edit</p>
+                        <h3 class="font-serif text-3xl t-head mt-2 font-medium">Luxury Lipstick</h3>
+                        <p class="t-body leading-relaxed mt-3 font-light">
                             Bold, rich colour with a
                             velvety touch.
                         </p>
-
-
-                        <a href="#contact" class="inline-block
-                               mt-6
-                               text-white
-                               text-xs
-                               uppercase
-                               tracking-widest
-                               luxury-link">
+                        <a href="#contact" class="inline-block mt-6 t-accent text-xs uppercase tracking-widest luxury-link">
                             Make Enquiry →
                         </a>
-
                     </div>
-
                 </article>
 
             </div>
-
         </div>
-
     </section>
 
 
     <!-- =====================================================
-     WHY CHOOSE US
+     WHY ELARA (FEATURES)
 ===================================================== -->
+    <section id="features" class="relative py-24 lg:py-36 bg-emerald overflow-hidden">
 
-    <section id="features" class="py-24 lg:py-32
-           bg-black text-white">
+        <!-- Stock pine branch decoration -->
+        <svg class="absolute -left-10 top-10 w-72 opacity-[.12] pine" viewBox="0 0 200 300" fill="none"
+            stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <path d="M100 0 V300" />
+            <g>
+                <path d="M100 30 L40 60 M100 30 L160 60" /><path d="M100 70 L30 110 M100 70 L170 110" />
+                <path d="M100 120 L20 170 M100 120 L180 170" /><path d="M100 180 L15 235 M100 180 L185 235" />
+            </g>
+        </svg>
+        <svg class="absolute -right-10 bottom-10 w-72 opacity-[.12] pine rotate-180" viewBox="0 0 200 300" fill="none"
+            stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <path d="M100 0 V300" />
+            <g>
+                <path d="M100 30 L40 60 M100 30 L160 60" /><path d="M100 70 L30 110 M100 70 L170 110" />
+                <path d="M100 120 L20 170 M100 120 L180 170" /><path d="M100 180 L15 235 M100 180 L185 235" />
+            </g>
+        </svg>
 
-        <div class="max-w-7xl mx-auto
-               px-6 lg:px-10">
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
 
-            <div class="grid lg:grid-cols-2
-                   gap-16">
-
-                <!-- Intro -->
-
+            <div class="grid lg:grid-cols-2 gap-14 items-end reveal">
                 <div>
-
-                    <p class="uppercase
-                           tracking-[.3em]
-                           text-champagne text-xs">
-                        The ELARA Difference
-                    </p>
-
-
-                    <h2 class="font-serif
-                           text-5xl md:text-6xl
-                           mt-5">
+                    <p class="uppercase tracking-[.3em] t-accent text-xs">The ELARA Difference</p>
+                    <h2 class="font-serif text-5xl md:text-7xl t-head mt-5 leading-[1.02] font-medium">
                         Why Choose
-                        <span class="italic text-gold">
-                            ELARA?
-                        </span>
+                        <span class="block italic gold-text">ELARA?</span>
                     </h2>
+                </div>
+                <p class="t-body leading-relaxed text-lg font-light border-l border-gold/40 pl-8">
+                    At the heart of LA Evolution is a deep appreciation for individuality. We recognize that every
+                    woman is unique, with her own story, style, and strength. Our products are thoughtfully designed
+                    to complement and enhance natural beauty, empowering women to feel confident, radiant, and
+                    unapologetically themselves.
+                </p>
+            </div>
 
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
 
-                    <div class="w-16 h-[2px]
-                           bg-gold
-                           my-7"></div>
-
-
-                    <p class="text-white/70
-                           leading-8
-                           max-w-lg">
-                        At the heart of LA Evolution is a deep appreciation for individuality. We recognize that every
-                        woman is unique, with her own story, style, and strength. Our products are thoughtfully designed
-                        to complement and enhance natural beauty, empowering women to feel confident, radiant, and
-                        unapologetically themselves.
+                <div class="reveal relative p-9 border bd-gold glass backdrop-blur-sm hover:border-gold/70 hover:-translate-y-2 transition duration-500">
+                    <div class="big-num">01</div>
+                    <h3 class="font-serif text-2xl t-head mt-4 font-medium">Luxury Meets Affordability</h3>
+                    <p class="t-body mt-3 leading-relaxed font-light">
+                        Premium elegance designed
+                        to remain accessible.
                     </p>
-
                 </div>
 
+                <div class="reveal relative p-9 border bd-gold glass backdrop-blur-sm hover:border-gold/70 hover:-translate-y-2 transition duration-500" style="transition-delay:.1s">
+                    <div class="big-num">02</div>
+                    <h3 class="font-serif text-2xl t-head mt-4 font-medium">Premium Materials</h3>
+                    <p class="t-body mt-3 leading-relaxed font-light">
+                        Carefully selected materials
+                        from trusted suppliers.
+                    </p>
+                </div>
 
-                <!-- Features -->
+                <div class="reveal relative p-9 border bd-gold glass backdrop-blur-sm hover:border-gold/70 hover:-translate-y-2 transition duration-500" style="transition-delay:.2s">
+                    <div class="big-num">03</div>
+                    <h3 class="font-serif text-2xl t-head mt-4 font-medium">Sustainability &amp; Purity</h3>
+                    <p class="t-body mt-3 leading-relaxed font-light">
+                        Beauty with responsibility
+                        at its heart.
+                    </p>
+                </div>
 
-                <div class="space-y-8">
-
-                    <div class="border-b
-                           border-white/10
-                           pb-8">
-
-                        <div class="flex gap-6">
-
-                            <span class="font-serif
-                                   text-gold
-                                   text-3xl">
-                                01
-                            </span>
-
-                            <div>
-
-                                <h3 class="font-serif
-                                       text-2xl">
-                                    Luxury Meets Affordability
-                                </h3>
-
-                                <p class="text-white/60
-                                       mt-2
-                                       leading-relaxed">
-                                    Premium elegance designed
-                                    to remain accessible.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="border-b
-                           border-white/10
-                           pb-8">
-
-                        <div class="flex gap-6">
-
-                            <span class="font-serif
-                                   text-gold
-                                   text-3xl">
-                                02
-                            </span>
-
-                            <div>
-
-                                <h3 class="font-serif
-                                       text-2xl">
-                                    Premium Materials
-                                </h3>
-
-                                <p class="text-white/60
-                                       mt-2
-                                       leading-relaxed">
-                                    Carefully selected materials
-                                    from trusted suppliers.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="border-b
-                           border-white/10
-                           pb-8">
-
-                        <div class="flex gap-6">
-
-                            <span class="font-serif
-                                   text-gold
-                                   text-3xl">
-                                03
-                            </span>
-
-                            <div>
-
-                                <h3 class="font-serif
-                                       text-2xl">
-                                    Sustainability & Purity
-                                </h3>
-
-                                <p class="text-white/60
-                                       mt-2
-                                       leading-relaxed">
-                                    Beauty with responsibility
-                                    at its heart.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div>
-
-                        <div class="flex gap-6">
-
-                            <span class="font-serif
-                                   text-gold
-                                   text-3xl">
-                                04
-                            </span>
-
-                            <div>
-
-                                <h3 class="font-serif
-                                       text-2xl">
-                                    Confidence-Boosting
-                                </h3>
-
-                                <p class="text-white/60
-                                       mt-2
-                                       leading-relaxed">
-                                    Designed to celebrate
-                                    individuality and confidence.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                <div class="reveal relative p-9 border bd-gold glass backdrop-blur-sm hover:border-gold/70 hover:-translate-y-2 transition duration-500" style="transition-delay:.3s">
+                    <div class="big-num">04</div>
+                    <h3 class="font-serif text-2xl t-head mt-4 font-medium">Confidence-Boosting</h3>
+                    <p class="t-body mt-3 leading-relaxed font-light">
+                        Designed to celebrate
+                        individuality and confidence.
+                    </p>
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
     <!-- =====================================================
-     GIFT CTA
+     CHRISTMAS GREETING BANNER
 ===================================================== -->
+    <section class="on-dark relative min-h-[560px] flex items-center justify-center overflow-hidden bg-black">
 
-    <section class="relative
-           py-32
-           overflow-hidden">
+        <img src="download.gif" alt="ELARA"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=1800&q=80'"
+            class="absolute top-0 left-0 w-full h-full object-cover opacity-60 z-0">
+        <!-- <div class="absolute inset-0 z-0"
+            style="background:radial-gradient(ellipse at center,rgba(10,10,10,.35),rgba(10,10,10,.9)),linear-gradient(180deg,rgba(101,29,42,.55),rgba(10,10,10,.7))"></div> -->
 
-        <img src="download.gif" alt="ELARA" class="absolute top-0 left-0 w-full h-full object-cover opacity-1 z-0">
+        <div class="relative z-10 text-center px-6 py-24 max-w-3xl reveal">
 
-        <!-- Decorative circles -->
+            <div class="flex justify-center mb-8">
+                <div class="ornament-ring bg-black/40"><span class="text-gold text-2xl">✦</span></div>
+            </div>
 
-        <div class="absolute
-               -right-40 -top-40
-               w-[500px] h-[500px]
-               rounded-full
-               border border-gold/20"></div>
+            <p class="uppercase tracking-[.4em] text-champagne text-xs">Christmas 2026</p>
 
-        <div class="absolute
-               -left-40 -bottom-40
-               w-[400px] h-[400px]
-               rounded-full
-               border border-gold/10"></div>
-               
-               
-
-
-        <div class="relative
-               max-w-4xl mx-auto
-               px-6 text-center">
-
-            <span class="text-gold text-3xl">
-                ✦
-            </span>
-
-
-            <p class="uppercase
-                   tracking-[.3em]
-                   text-champagne
-                   text-xs mt-5">
-                Christmas 2026
-            </p>
-
-
-            <h2 class="font-serif
-                   text-5xl md:text-7xl
-                   mt-5">
-                   <span class="italic text-gold">
-                Wish You a Merry Christmas & Happy New Year!
-            
-                </span>
+            <h2 class="font-serif text-5xl md:text-7xl text-white mt-6 leading-[1.05] font-medium">
+                Wish You a <span class="italic gold-text">Merry Christmas</span> &amp; Happy New Year!
             </h2>
 
+            <div class="gold-line mx-auto my-8"></div>
 
-            <p class="max-w-2xl mx-auto
-                   mt-6
-                   text-white/70
-                   leading-relaxed">
+            <p class="text-white/85 leading-relaxed text-lg font-light">
                 Discover thoughtful gifts that bring beauty,
                 confidence and joy to the women who matter most.
             </p>
 
-
-            <!-- <a href="#contact" class="inline-block
-                   mt-9
-                   border border-gold
-                   px-8 py-4
-                   text-gold
-                   text-xs uppercase
-                   tracking-widest
-                   hover:bg-gold
-                   hover:text-burgundy
-                   transition">
-                Explore Holiday Gifts
-            </a> -->
-
+            <p class="text-gold text-2xl mt-8 tracking-[.5em]">✦ ✦ ✦</p>
         </div>
-
     </section>
 
+
     <!-- =====================================================
-     KEY FEATURES OF LA EVOLUTION
+     KEY FEATURES
 ===================================================== -->
+    <section id="facts1" class="relative py-24 lg:py-36 bg-facts1 overflow-hidden">
 
-    <section id="facts1" class="relative py-24 lg:py-32
-           bg-black text-white
-           overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-        <!-- Decorative Christmas glow -->
-        <div class="absolute -top-40 -right-40
-               w-[500px] h-[500px]
-               rounded-full
-               bg-gold/5 blur-3xl"></div>
-
-        <div class="absolute -bottom-40 -left-40
-               w-[450px] h-[450px]
-               rounded-full
-               bg-red/10 blur-3xl"></div>
-
-
-        <div class="relative z-10
-               max-w-7xl mx-auto
-               px-6 lg:px-10">
-
-            <!-- Heading -->
-
-            <div class="max-w-3xl mx-auto
-                   text-center">
-
-                <span class="text-gold text-2xl">
-                    ✦
-                </span>
-
-                <p class="mt-4
-                       uppercase
-                       tracking-[.3em]
-                       text-champagne
-                       text-xs">
-                    The LA Evolution Difference
-                </p>
-
-                <h2 class="font-serif
-                       text-5xl md:text-6xl
-                       mt-4">
-                    Key
-                    <span class="italic text-gold">
-                        Features
-                    </span>
-                    of LA Evolution
+            <div class="text-center max-w-3xl mx-auto reveal">
+                <p class="uppercase tracking-[.3em] t-accent text-xs">The LA Evolution Difference</p>
+                <h2 class="font-serif text-5xl md:text-7xl t-head mt-5 leading-[1.02] font-medium">
+                    Key <span class="italic gold-text">Features</span>
+                    <span class="block text-4xl md:text-5xl t-body mt-2">of LA Evolution</span>
                 </h2>
-
-                <div class="w-16 h-[2px]
-                       bg-gold
-                       mx-auto
-                       my-7"></div>
-
-                <p class="text-white/70
-                       leading-relaxed">
+                <div class="gold-line mx-auto my-8"></div>
+                <p class="t-body leading-relaxed text-lg font-light">
                     We invite you to explore our collection
                     and discover beauty that is inclusive,
                     empowering, and truly transformative.
                 </p>
-
             </div>
 
+            <div class="grid md:grid-cols-2 gap-8 mt-20">
 
-            <!-- Feature Cards -->
-
-            <div class="grid
-                   sm:grid-cols-2
-                   lg:grid-cols-4
-                   gap-6
-                   mt-16">
-
-                <!-- Feature 01 -->
-
-                <div class="group
-                       relative
-                       border border-white/10
-                       bg-white/[0.04]
-                       p-8
-                       min-h-[280px]
-                       hover:bg-white/[0.08]
-                       hover:border-gold/40
-                       transition duration-500">
-
-                    <div class="absolute
-                           top-0 left-0
-                           w-0 h-[2px]
-                           bg-gold
-                           group-hover:w-full
-                           transition-all duration-500"></div>
-
-
-                    <div class="font-serif
-                           text-5xl
-                           text-gold/70
-                           mb-8">
-                        01
+                <div class="reveal flex gap-7 items-start p-9 lux-card">
+                    <div class="ornament-ring shrink-0 text-gold font-serif italic text-2xl">01</div>
+                    <div>
+                        <h3 class="font-serif text-3xl t-head font-medium">Organic &amp; Natural</h3>
+                        <p class="t-body mt-3 leading-relaxed font-light">
+                            Gentle, effective formulas free from
+                            harmful chemicals and created with
+                            mindful beauty in mind.
+                        </p>
                     </div>
-
-
-                    <h3 class="font-serif
-                           text-2xl
-                           text-white">
-                        Organic & Natural
-                    </h3>
-
-
-                    <p class="mt-4
-                           text-white/60
-                           text-sm
-                           leading-7">
-                        Gentle, effective formulas free from
-                        harmful chemicals and created with
-                        mindful beauty in mind.
-                    </p>
-
                 </div>
 
-
-                <!-- Feature 02 -->
-
-                <div class="group
-                       relative
-                       border border-white/10
-                       bg-white/[0.04]
-                       p-8
-                       min-h-[280px]
-                       hover:bg-white/[0.08]
-                       hover:border-gold/40
-                       transition duration-500">
-
-                    <div class="absolute
-                           top-0 left-0
-                           w-0 h-[2px]
-                           bg-gold
-                           group-hover:w-full
-                           transition-all duration-500"></div>
-
-
-                    <div class="font-serif
-                           text-5xl
-                           text-gold/70
-                           mb-8">
-                        02
+                <div class="reveal flex gap-7 items-start p-9 lux-card" style="transition-delay:.1s">
+                    <div class="ornament-ring shrink-0 text-gold font-serif italic text-2xl">02</div>
+                    <div>
+                        <h3 class="font-serif text-3xl t-head font-medium">Ethically Sourced</h3>
+                        <p class="t-body mt-3 leading-relaxed font-light">
+                            Cruelty-free and environmentally responsible
+                            choices that put people and the planet first.
+                        </p>
                     </div>
-
-
-                    <h3 class="font-serif
-                           text-2xl
-                           text-white">
-                        Ethically Sourced
-                    </h3>
-
-
-                    <p class="mt-4
-                           text-white/60
-                           text-sm
-                           leading-7">
-                        Cruelty-free and environmentally responsible
-                        choices that put people and the planet first.
-                    </p>
-
                 </div>
 
-
-                <!-- Feature 03 -->
-
-                <div class="group
-                       relative
-                       border border-white/10
-                       bg-white/[0.04]
-                       p-8
-                       min-h-[280px]
-                       hover:bg-white/[0.08]
-                       hover:border-gold/40
-                       transition duration-500">
-
-                    <div class="absolute
-                           top-0 left-0
-                           w-0 h-[2px]
-                           bg-gold
-                           group-hover:w-full
-                           transition-all duration-500"></div>
-
-
-                    <div class="font-serif
-                           text-5xl
-                           text-gold/70
-                           mb-8">
-                        03
+                <div class="reveal flex gap-7 items-start p-9 lux-card" style="transition-delay:.2s">
+                    <div class="ornament-ring shrink-0 text-gold font-serif italic text-2xl">03</div>
+                    <div>
+                        <h3 class="font-serif text-3xl t-head font-medium">For Every Woman</h3>
+                        <p class="t-body mt-3 leading-relaxed font-light">
+                            Thoughtfully designed for diverse skin
+                            types, tones, lifestyles and individual
+                            beauty journeys.
+                        </p>
                     </div>
-
-
-                    <h3 class="font-serif
-                           text-2xl
-                           text-white">
-                        For Every Woman
-                    </h3>
-
-
-                    <p class="mt-4
-                           text-white/60
-                           text-sm
-                           leading-7">
-                        Thoughtfully designed for diverse skin
-                        types, tones, lifestyles and individual
-                        beauty journeys.
-                    </p>
-
                 </div>
 
-
-                <!-- Feature 04 -->
-
-                <div class="group
-                       relative
-                       border border-white/10
-                       bg-white/[0.04]
-                       p-8
-                       min-h-[280px]
-                       hover:bg-white/[0.08]
-                       hover:border-gold/40
-                       transition duration-500">
-
-                    <div class="absolute
-                           top-0 left-0
-                           w-0 h-[2px]
-                           bg-gold
-                           group-hover:w-full
-                           transition-all duration-500"></div>
-
-
-                    <div class="font-serif
-                           text-5xl
-                           text-gold/70
-                           mb-8">
-                        04
+                <div class="reveal flex gap-7 items-start p-9 lux-card" style="transition-delay:.3s">
+                    <div class="ornament-ring shrink-0 text-gold font-serif italic text-2xl">04</div>
+                    <div>
+                        <h3 class="font-serif text-3xl t-head font-medium">Confidence-Boosting</h3>
+                        <p class="t-body mt-3 leading-relaxed font-light">
+                            Products designed to enhance both
+                            inner confidence and outer beauty.
+                        </p>
                     </div>
-
-
-                    <h3 class="font-serif
-                           text-2xl
-                           text-white">
-                        Confidence-Boosting
-                    </h3>
-
-
-                    <p class="mt-4
-                           text-white/60
-                           text-sm
-                           leading-7">
-                        Products designed to enhance both
-                        inner confidence and outer beauty.
-                    </p>
-
                 </div>
 
             </div>
 
+            <p class="text-center text-gold text-2xl mt-16 tracking-[.6em]">✦ ✦ ✦</p>
         </div>
-
     </section>
 
 
-    <section id="facts" class="relative
-           py-24 lg:py-32
-           bg-burgundy
-           text-white
-           overflow-hidden">
+    <!-- =====================================================
+     DID YOU KNOW
+===================================================== -->
+    <section id="facts" class="relative py-24 lg:py-36 bg-facts overflow-hidden">
 
-        <!-- Decorative Christmas glow -->
+        <div class="absolute inset-0 opacity-[.06] dots-var"></div>
+        <img src="https://images.unsplash.com/photo-1482517967863-00e15c9b44be?auto=format&fit=crop&w=1800&q=70" alt=""
+            class="absolute inset-0 w-full h-full object-cover opacity-[.12] mix-blend-luminosity" onerror="this.style.display='none'">
 
-        <div class="absolute
-               top-0 right-0
-               w-[500px] h-[500px]
-               bg-gold/10
-               rounded-full
-               blur-3xl"></div>
+        <div class="relative max-w-6xl mx-auto px-6 lg:px-10">
 
-
-        <div class="absolute
-               bottom-0 left-0
-               w-[350px] h-[350px]
-               bg-red/20
-               rounded-full
-               blur-3xl"></div>
-
-
-        <!-- Decorative ornaments -->
-
-        <div class="absolute
-               top-16 right-16
-               text-gold/30
-               text-5xl
-               hidden md:block">
-            ✦
-        </div>
-
-
-        <div class="absolute
-               bottom-16 left-16
-               text-champagne/20
-               text-4xl
-               hidden md:block">
-            ✦
-        </div>
-
-
-        <div class="relative z-10
-               max-w-7xl mx-auto
-               px-6 lg:px-10">
-
-            <!-- Heading -->
-
-            <div class="text-center
-                   max-w-3xl
-                   mx-auto">
-
-                <span class="text-gold text-2xl">
-                    ✦
-                </span>
-
-
-                <p class="mt-4
-                       uppercase
-                       tracking-[.3em]
-                       text-champagne
-                       text-xs">
-                    Beauty Beyond the Surface
-                </p>
-
-
-                <h2 class="font-serif
-                       text-5xl md:text-6xl
-                       mt-4">
-                    Did
-                    <span class="italic text-gold">
-                        You
-                    </span>
-                    Know?
+            <div class="text-center reveal">
+                <p class="uppercase tracking-[.3em] t-accent text-xs">Beauty Beyond the Surface</p>
+                <h2 class="font-serif text-5xl md:text-8xl t-head mt-5 leading-[.98] font-medium">
+                    Did <span class="italic gold-text">You</span> Know?
                 </h2>
-
-
-                <div class="w-16 h-[2px]
-                       bg-gold
-                       mx-auto
-                       my-7"></div>
-
+                <div class="gold-line mx-auto my-8"></div>
             </div>
 
+            <div class="grid md:grid-cols-2 gap-8 mt-14">
 
-            <!-- Facts -->
-
-            <div class="grid
-                   md:grid-cols-2
-                   gap-7
-                   mt-14">
-
-                <!-- Fact 01 -->
-
-                <div class="group
-                       relative
-                       bg-dark
-                       text-white
-                       p-8 md:p-10
-                       border border-gold/20
-                       shadow-xl
-                       shadow-black/10
-                       hover:-translate-y-2
-                       transition duration-500">
-
-                    <!-- Number -->
-
-                    <div class="flex
-                           items-center
-                           justify-between">
-
-                        <span class="font-serif
-                               text-5xl
-                               text-gold">
-                            01
-                        </span>
-
-
-                        <span class="text-gold
-                               text-xl
-                               group-hover:rotate-12
-                               transition">
-                            ✦
-                        </span>
-
-                    </div>
-
-
-                    <div class="w-12 h-[2px]
-                           bg-burgundy
-                           mt-7 mb-6"></div>
-
-
-                    <p class="font-serif
-                           text-2xl
-                           leading-relaxed">
+                <div class="reveal relative p-10 md:p-12 border glass-panel backdrop-blur-sm">
+                    <span class="absolute -top-5 left-10 bg-burgundy border border-gold/60 text-champagne px-4 py-1 font-serif italic text-xl">01 ✦</span>
+                    <p class="font-serif text-2xl md:text-[1.7rem] leading-snug t-head font-medium">
                         The global beauty industry is valued
                         at over $500 billion, yet many luxury
                         products remain out of reach for
                         everyday women.
                     </p>
-
-
-                    <p class="text-gray-500
-                           text-sm
-                           leading-7
-                           mt-5">
+                    <p class="t-body mt-5 leading-relaxed font-light">
                         LA Evolution is here to help change
                         that by making high-end beauty
                         more accessible.
                     </p>
-
                 </div>
 
-
-                <!-- Fact 02 -->
-
-                <div class="group
-                       relative
-                       bg-dark
-                       text-white
-                       p-8 md:p-10
-                       border border-gold/20
-                       shadow-xl
-                       shadow-black/10
-                       hover:-translate-y-2
-                       transition duration-500">
-
-                    <!-- Number -->
-
-                    <div class="flex
-                           items-center
-                           justify-between">
-
-                        <span class="font-serif
-                               text-5xl
-                               text-gold">
-                            02
-                        </span>
-
-
-                        <span class="text-gold
-                               text-xl
-                               group-hover:rotate-12
-                               transition">
-                            ✦
-                        </span>
-
-                    </div>
-
-
-                    <div class="w-12 h-[2px]
-                           bg-burgundy
-                           mt-7 mb-6"></div>
-
-
-                    <p class="font-serif
-                           text-2xl
-                           leading-relaxed">
+                <div class="reveal relative p-10 md:p-12 border glass-panel backdrop-blur-sm" style="transition-delay:.15s">
+                    <span class="absolute -top-5 left-10 bg-burgundy border border-gold/60 text-champagne px-4 py-1 font-serif italic text-xl">02 ✦</span>
+                    <p class="font-serif text-2xl md:text-[1.7rem] leading-snug t-head font-medium">
                         Studies show that self-care can support
                         confidence and mental well-being.
                     </p>
-
-
-                    <p class="text-gray-500
-                           text-sm
-                           leading-7
-                           mt-5">
+                    <p class="t-body mt-5 leading-relaxed font-light">
                         Our products are designed not just
                         for beauty, but to uplift and empower
                         women around the world.
                     </p>
-
                 </div>
 
             </div>
 
-
-            <!-- Bottom message -->
-
-            <div class="text-center
-                   mt-14">
-
-                <p class="text-white/60
-                       text-sm">
-                    Beauty is not simply how you look.
-                    It is how you feel.
+            <div class="text-center mt-20 reveal">
+                <p class="font-serif italic text-3xl md:text-5xl t-head leading-snug">
+                    Beauty is not simply how you look.<br>
+                    <span class="gold-text">It is how you feel.</span>
                 </p>
-
-                <div class="mt-4
-                       text-gold">
-                    ✦ &nbsp; ✦ &nbsp; ✦
-                </div>
-
+                <p class="text-gold text-xl mt-10 tracking-[.4em]">✦ &nbsp; ✦ &nbsp; ✦</p>
             </div>
 
         </div>
-
     </section>
 
 
-
     <!-- =====================================================
-     BLOG / JOURNAL
+     BLOG
 ===================================================== -->
+    <section id="blog" class="relative py-24 lg:py-36 bg-blog overflow-hidden">
 
-    <section id="blog" class="py-24 lg:py-32
-           bg-dark">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-        <div class="max-w-7xl mx-auto
-               px-6 lg:px-10">
-
-            <div class="text-center">
-
-                <p class="uppercase
-                       tracking-[.3em]
-                       text-white text-xs">
-                    From Our Journal
-                </p>
-
-
-                <h2 class="font-serif
-                       text-5xl md:text-6xl
-                       text-white
-                       mt-4">
-                    Blogs & Stories
+            <div class="text-center max-w-2xl mx-auto reveal">
+                <p class="uppercase tracking-[.3em] t-accent text-xs">From Our Journal</p>
+                <h2 class="font-serif text-5xl md:text-7xl t-head mt-5 font-medium">
+                    Blogs &amp; <span class="italic gold-text">Stories</span>
                 </h2>
-
+                <div class="gold-line mx-auto my-8"></div>
             </div>
 
+            <div class="grid lg:grid-cols-2 gap-10 mt-16">
 
-            <div class="grid md:grid-cols-2
-                   gap-8
-                   mt-14">
-
-                <!-- Blog 1 -->
-
-                <article class="bg-dark
-                       border border-gold/10
-                       overflow-hidden
-                       image-card">
-
-                    <div class="overflow-hidden">
-
+                <article class="image-card lux-card reveal flex flex-col">
+                    <div class="relative overflow-hidden">
                         <img src="elarapad.jpg"
-                            alt="ELARA Journal" class="image-zoom
-                               w-full
-                               h-[350px]
-                               object-cover">
-
+                            alt="ELARA Journal" class="image-zoom w-full h-[320px] object-cover">
+                        <div class="absolute inset-0 ov-blog"></div>
                     </div>
-
-
-                    <div class="p-8">
-
-
-
-
-                        <h3 class="font-serif
-                               text-3xl
-                               text-white
-                               mt-3">
+                    <div class="p-9 flex flex-col grow">
+                        <h3 class="font-serif text-3xl t-head leading-tight font-medium">
                             From Missed Lessons to Renewed Chances: How ELARA Pads Keep Girls on the Path to Learning
                         </h3>
-
-
-                        <p class="text-gray-500
-                               leading-relaxed
-                               mt-4">
+                        <p class="t-body leading-relaxed mt-4 font-light">
                             For millions of girls across Asia, the line between staying in school and slipping out of it
                             can be as fragile as a single piece of cloth. Menstruation, a biological constant, too often
                             becomes a turning point. Without safe and affordable products, many rely on rags, leaves, or
                             other unsafe substitutes.....
                         </p>
-
-
-                        <a href="https://gritdaily.com/how-elara-pads-keep-girls-on-the-path-to-learning/" class="inline-block
-                               mt-6
-                               text-white
-                               text-xs uppercase
-                               tracking-widest
-                               luxury-link">
+                        <a href="https://gritdaily.com/how-elara-pads-keep-girls-on-the-path-to-learning/"
+                            class="inline-block mt-6 t-accent text-xs uppercase tracking-widest luxury-link self-start">
                             Read More →
                         </a>
-
                     </div>
-
                 </article>
 
-
-                <!-- Blog 2 -->
-
-                <article class="bg-dark
-                       border border-gold/10
-                       overflow-hidden
-                       image-card">
-
-                    <div class="overflow-hidden">
-
+                <article class="image-card lux-card reveal flex flex-col" style="transition-delay:.15s">
+                    <div class="relative overflow-hidden">
                         <img src="elarapad.jpg"
-                            alt="Christmas Beauty" class="image-zoom
-                               w-full
-                               h-[350px]
-                               object-cover">
-
+                            alt="Christmas Beauty" class="image-zoom w-full h-[320px] object-cover">
+                        <div class="absolute inset-0 ov-blog"></div>
                     </div>
-
-
-                    <div class="p-8">
-
-
-                        <h3 class="font-serif
-                               text-3xl
-                               text-white
-                               mt-3">
+                    <div class="p-9 flex flex-col grow">
+                        <h3 class="font-serif text-3xl t-head leading-tight font-medium">
                             Where Education Begins with Access: ELARA’s Mission Across Asia
                         </h3>
-
-
-                        <p class="text-gray-500
-                               leading-relaxed
-                               mt-4">
+                        <p class="t-body leading-relaxed mt-4 font-light">
                             In countless classrooms across Asia, a quiet but devastating interruption occurs every
                             month.
                             Adolescent girls, lacking access to menstrual products, are forced to stay home from school,
@@ -1834,401 +1283,163 @@
                             test
                             scores, widened educational gaps, and in many cases, complete withdrawal from school...
                         </p>
-
-
                         <a href="https://bazaarvietnam.vn/where-education-begins-with-access-elaras-mission-across-asia/"
-                            class="inline-block
-                               mt-6
-                               text-white
-                               text-xs uppercase
-                               tracking-widest
-                               luxury-link">
+                            class="inline-block mt-6 t-accent text-xs uppercase tracking-widest luxury-link self-start">
                             Read More →
                         </a>
-
                     </div>
-
                 </article>
 
             </div>
-
         </div>
-
     </section>
 
 
-
     <!-- =====================================================
-     CONTACT / ENQUIRY
+     CONTACT
 ===================================================== -->
+    <section id="contact" class="relative py-24 lg:py-36 bg-contact overflow-hidden">
 
-    <section id="contact" class="py-24 lg:py-32
-           bg-black">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
-        <div class="max-w-6xl mx-auto
-               px-6 lg:px-10">
+                <!-- Left text -->
+                <div class="reveal lg:sticky lg:top-32">
+                    <p class="uppercase tracking-[.3em] t-accent text-xs">Enquire With Us</p>
 
-            <div class="grid lg:grid-cols-2
-                   gap-16">
-
-                <!-- Text -->
-
-                <div>
-
-                    <p class="uppercase
-                           tracking-[.3em]
-                           text-white text-xs">
-                        Enquire With Us
-                    </p>
-
-
-                    <h2 class="font-serif
-                           text-5xl md:text-6xl
-                           text-white
-                           mt-5">
+                    <h2 class="font-serif text-5xl md:text-7xl t-head mt-5 leading-[1.02] font-medium">
                         Let's Make
-                        Something Beautiful.
+                        <span class="block italic gold-text">Something Beautiful.</span>
                     </h2>
 
+                    <div class="gold-line left my-8"></div>
 
-                    <div class="gold-line my-7"></div>
-
-
-                    <p class="text-white
-                           leading-8">
+                    <p class="t-body leading-relaxed text-lg font-light max-w-md">
                         Complete the form and our team will
                         contact you regarding purchases,
                         consultations, collaborations and
                         other enquiries.
                     </p>
 
+                    <ul class="mt-10 space-y-4 t-body">
+                        <li class="flex items-center gap-4"><span class="text-gold">✦</span> Beauty &amp; Wellness</li>
+                        <li class="flex items-center gap-4"><span class="text-gold">✦</span> Product Enquiries</li>
+                        <li class="flex items-center gap-4"><span class="text-gold">✦</span> Partnerships &amp; Collaborations</li>
+                    </ul>
 
-                    <div class="mt-10 space-y-5">
-
-                        <div class="flex gap-4">
-
-                            <span class="text-gold">
-                                ✦
-                            </span>
-
-                            <span class="text-white">
-                                Beauty & Wellness
-                            </span>
-
-                        </div>
-
-
-                        <div class="flex gap-4">
-
-                            <span class="text-gold">
-                                ✦
-                            </span>
-
-                            <span class="text-white">
-                                Product Enquiries
-                            </span>
-
-                        </div>
-
-
-                        <div class="flex gap-4">
-
-                            <span class="text-gold">
-                                ✦
-                            </span>
-
-                            <span class="text-white">
-                                Partnerships & Collaborations
-                            </span>
-
-                        </div>
-
+                    <!-- Gift box ornament -->
+                    <div class="hidden md:block mt-14 opacity-90">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                            <rect x="14" y="48" width="92" height="62" fill="#651D2A" stroke="#C9A45C" stroke-width="1.5" />
+                            <rect x="8" y="34" width="104" height="18" fill="#8B2635" stroke="#C9A45C" stroke-width="1.5" />
+                            <rect x="54" y="34" width="12" height="76" fill="#C9A45C" />
+                            <path d="M60 34 C 40 6, 14 18, 40 34 Z M60 34 C 80 6, 106 18, 80 34 Z" fill="none" stroke="#E7D29A" stroke-width="2.5" />
+                        </svg>
                     </div>
-
                 </div>
 
-
                 <!-- Form -->
+                <form class="reveal relative p-8 md:p-12 border glass-form backdrop-blur-md">
+                    <span class="absolute -top-px -left-px w-10 h-10 border-t-2 border-l-2 border-gold"></span>
+                    <span class="absolute -bottom-px -right-px w-10 h-10 border-b-2 border-r-2 border-gold"></span>
 
-                <form class="bg-dark
-                       p-7 md:p-10
-                       shadow-xl
-                       shadow-dark/5">
-
-                    <div class="grid sm:grid-cols-2
-                           gap-5">
-
+                    <div class="grid md:grid-cols-2 gap-8">
                         <div>
-
-                            <label class="block
-                                   text-xs
-                                   uppercase
-                                   tracking-widest
-                                   text-gray-500
-                                   mb-2">
-                                First Name
-                            </label>
-
-                            <input type="text" class="w-full
-                                   border border-gray-200
-                                   px-4 py-3
-                                   outline-none
-                                   focus:border-gold">
-
+                            <label class="field-label">First Name</label>
+                            <input type="text" class="field">
                         </div>
-
-
                         <div>
-
-                            <label class="block
-                                   text-xs
-                                   uppercase
-                                   tracking-widest
-                                   text-gray-500
-                                   mb-2">
-                                Last Name
-                            </label>
-
-                            <input type="text" class="w-full
-                                   border border-gray-200
-                                   px-4 py-3
-                                   outline-none
-                                   focus:border-gold">
-
+                            <label class="field-label">Last Name</label>
+                            <input type="text" class="field">
                         </div>
-
                     </div>
 
-
-                    <div class="mt-5">
-
-                        <label class="block
-                               text-xs
-                               uppercase
-                               tracking-widest
-                               text-gray-500
-                               mb-2">
-                            Email Address
-                        </label>
-
-                        <input type="email" class="w-full
-                               border border-gray-200
-                               px-4 py-3
-                               outline-none
-                               focus:border-gold">
-
+                    <div class="mt-8">
+                        <label class="field-label">Email Address</label>
+                        <input type="email" class="field">
                     </div>
 
-
-                    <div class="mt-5">
-
-                        <label class="block
-                               text-xs
-                               uppercase
-                               tracking-widest
-                               text-gray-500
-                               mb-2">
-                            Phone Number
-                        </label>
-
-                        <input type="tel" class="w-full
-                               border border-gray-200
-                               px-4 py-3
-                               outline-none
-                               focus:border-gold">
-
+                    <div class="mt-8">
+                        <label class="field-label">Phone Number</label>
+                        <input type="tel" class="field">
                     </div>
 
-
-                    <div class="mt-5">
-
-                        <label class="block
-                               text-xs
-                               uppercase
-                               tracking-widest
-                               text-gray-500
-                               mb-2">
-                            Area of Interest
-                        </label>
-
-                        <select class="w-full
-                               border border-gray-200
-                               px-4 py-3
-                               outline-none
-                               focus:border-gold">
-
+                    <div class="mt-8">
+                        <label class="field-label">Area of Interest</label>
+                        <select class="field">
                             <option>Product Enquiry</option>
-                            <option>Beauty & Wellness</option>
+                            <option>Beauty &amp; Wellness</option>
                             <option>Partnership</option>
                             <option>Collaboration</option>
                             <option>Other</option>
-
                         </select>
-
                     </div>
 
-
-                    <div class="mt-5">
-
-                        <label class="block
-                               text-xs
-                               uppercase
-                               tracking-widest
-                               text-gray-500
-                               mb-2">
-                            Your Message
-                        </label>
-
-                        <textarea rows="5" class="w-full
-                               border border-gray-200
-                               px-4 py-3
-                               outline-none
-                               focus:border-gold"></textarea>
-
+                    <div class="mt-8">
+                        <label class="field-label">Your Message</label>
+                        <textarea rows="5" class="field"></textarea>
                     </div>
 
-
-                    <div class="mt-5 flex gap-3">
-
+                    <div class="mt-8 flex gap-3">
                         <input type="checkbox" class="mt-1 accent-burgundy">
-
-                        <p class="text-xs
-                               text-gray-500
-                               leading-relaxed">
+                        <p class="text-xs t-body leading-relaxed">
                             I agree to the privacy policy and
                             wish to receive exclusive updates.
                         </p>
-
                     </div>
 
-
-                    <button type="submit" class="mt-7
-                           w-full
-                           bg-burgundy
-                           text-white
-                           py-4
-                           text-xs
-                           uppercase
-                           tracking-widest
-                           hover:bg-forest
-                           transition">
+                    <button type="submit" class="btn-gold mt-9 w-full !py-5 cursor-pointer">
                         Send Enquiry
                     </button>
-
                 </form>
 
             </div>
-
         </div>
-
     </section>
 
 
     <!-- =====================================================
      FOOTER
 ===================================================== -->
+    <footer class="on-dark relative bg-dark text-white">
 
-    <footer class="bg-dark text-white">
-
-        <!-- Christmas message -->
-
-        <div class="border-b
-               border-white/10
-               py-4
-               text-center">
-
-            <p class="text-[10px]
-                   uppercase
-                   tracking-[.3em]
-                   text-champagne">
-                ✦ Wishing You a Season of Beauty & Joy ✦
+        <div class="border-y border-gold/30 py-5 text-center bg-forest/60">
+            <p class="text-[10px] uppercase tracking-[.3em] text-champagne">
+                ✦ Wishing You a Season of Beauty &amp; Joy ✦
             </p>
-
         </div>
 
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
 
-        <div class="max-w-7xl mx-auto
-               px-6 lg:px-10
-               py-16">
-
-            <div class="flex flex-col md:flex-row
-                   gap-16
-                   md:gap-32">
-
-                <!-- Brand -->
+            <div class="flex flex-col md:flex-row gap-16 md:gap-32">
 
                 <div>
-
                     <img src="https://laevolution.com/img/logo1.png" alt="ELARA" class="h-12 w-auto mb-5">
-
-                    <p class="text-white/60
-                           leading-relaxed
-                           text-sm">
+                    <p class="text-white/60 leading-relaxed text-sm max-w-sm">
                         More than just a brand, LA Evolution is a community of empowered women, embracing self-love and
                         authenticity.
                     </p>
-
                 </div>
 
-
-                <!-- Explore -->
-
-
-                <!-- Collections -->
-
-
-
-
-
-
                 <div>
-
-                    <h3 class="font-serif
-                           text-2xl
-                           text-gold
-                           mb-5">
-                        Connect
-                    </h3>
-
+                    <h3 class="font-serif text-3xl gold-text italic mb-5">Connect</h3>
 
                     <div class="flex gap-4 mt-6">
-
-                        <a target="_blank" href="https://www.facebook.com/share/1Aww7dmQUx/"><i
-                                class="fab fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/share/1Aww7dmQUx/" aria-label="Facebook"
+                            class="w-11 h-11 rounded-full border border-gold/50 flex items-center justify-center text-champagne hover:bg-gold hover:text-black transition">
+                            <i class="fab fa-facebook-f"></i></a>
                         <a target="_blank"
-                            href="https://www.instagram.com/elara_by_la_evolution?igsh=MWNreWk5M2NnZndwMA=="><i
-                                class="fab fa-instagram"></i></a>
-
+                            href="https://www.instagram.com/elara_by_la_evolution?igsh=MWNreWk5M2NnZndwMA==" aria-label="Instagram"
+                            class="w-11 h-11 rounded-full border border-gold/50 flex items-center justify-center text-champagne hover:bg-gold hover:text-black transition">
+                            <i class="fab fa-instagram"></i></a>
                     </div>
-
                 </div>
 
             </div>
 
-
-            <!-- Copyright -->
-
-            <div class="border-t
-                   border-white/10
-                   mt-14 pt-7
-                   flex flex-col
-                   md:flex-row
-                   justify-between
-                   gap-4
-                   text-xs
-                   text-white/40">
-
-                <p>
-                    © 2026 ELARA by LA Evolution.
-                    All Rights Reserved.
-                </p>
-
-                <!-- <p>
-                  Designed with <i class="fas fa-heart"
-                            style="color: var(--gold);"></i> by <a style="color: rgba(255, 255, 255, 0.7);"
-                            target="_blank" href="https://www.marchstreetmedia.com/"> March Street Media </a></p>
-                </p> -->
-
+            <div class="border-t border-white/10 mt-14 pt-7 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/40">
+                <p>© 2026 ELARA by LA Evolution. All Rights Reserved.</p>
+                <p class="text-gold/60 tracking-[.4em]">❄ ✦ ❄</p>
             </div>
 
         </div>
@@ -2239,125 +1450,71 @@
     <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
-
     <script>
 
-        /* --------------------------------
-           Snowfall
-        -------------------------------- */
+        /* Snowfall */
+        const snowContainer = document.getElementById('snow-container');
+        const flakes = ['•', '•', '❄', '•', '✦'];
 
-        const snowContainer =
-            document.getElementById('snow-container');
-
-        for (let i = 0; i < 40; i++) {
-
-            const snowflake =
-                document.createElement('span');
-
-            snowflake.className =
-                'snowflake';
-
-            snowflake.innerHTML = '•';
-
-            snowflake.style.left =
-                Math.random() * 100 + '%';
-
-            snowflake.style.fontSize =
-                (Math.random() * 12 + 6) + 'px';
-
-            snowflake.style.opacity =
-                Math.random() * .5 + .2;
-
-            snowflake.style.animationDuration =
-                (Math.random() * 8 + 8) + 's';
-
-            snowflake.style.animationDelay =
-                (Math.random() * 10) + 's';
-
+        for (let i = 0; i < 45; i++) {
+            const snowflake = document.createElement('span');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = flakes[Math.floor(Math.random() * flakes.length)];
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.fontSize = (Math.random() * 12 + 6) + 'px';
+            snowflake.style.opacity = Math.random() * .45 + .45;
+            snowflake.style.animationDuration = (Math.random() * 8 + 8) + 's';
+            snowflake.style.animationDelay = (Math.random() * 10) + 's';
             snowContainer.appendChild(snowflake);
         }
 
-
-        /* --------------------------------
-           Navbar on scroll
-        -------------------------------- */
-
-        const navbar =
-            document.getElementById('navbar');
-
+        /* Navbar on scroll */
+        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-
-            if (window.scrollY > 50) {
-
-                navbar.classList.add('scrolled');
-
-            } else {
-
-                navbar.classList.remove('scrolled');
-
-            }
-
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
+        /* Mobile menu */
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => mobileMenu.classList.toggle('active'));
 
-        /* --------------------------------
-           Mobile menu
-        -------------------------------- */
-
-        const menuButton =
-            document.getElementById('menu-button');
-
-        const mobileMenu =
-            document.getElementById('mobile-menu');
-
-        menuButton.addEventListener('click', () => {
-
-            mobileMenu.classList.toggle('active');
-
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
         });
 
+        /* Theme switch */
+        const root = document.documentElement;
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.setAttribute('aria-checked', root.getAttribute('data-theme') === 'dark');
+        themeBtn.addEventListener('click', () => {
+            const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.classList.add('theme-anim');
+            root.setAttribute('data-theme', next);
+            themeBtn.setAttribute('aria-checked', next === 'dark');
+            try { localStorage.setItem('elara-theme', next); } catch (e) { }
+            setTimeout(() => root.classList.remove('theme-anim'), 700);
+        });
 
-        /* --------------------------------
-           Close mobile menu
-        -------------------------------- */
-
-        document
-            .querySelectorAll('#mobile-menu a')
-            .forEach(link => {
-
-                link.addEventListener('click', () => {
-
-                    mobileMenu.classList.remove('active');
-
-                });
-
+        /* Reveal on scroll */
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    io.unobserve(e.target);
+                }
             });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-
-        /* --------------------------------
-           Newsletter demo
-        -------------------------------- */
-
-        document
-            .querySelectorAll('form')
-            .forEach(form => {
-
-                form.addEventListener('submit', function (e) {
-
-                    /*
-                     * Remove this preventDefault()
-                     * when connecting to your real backend.
-                     */
-
-                    e.preventDefault();
-
-                    alert(
-                        'Thank you for connecting with ELARA.'
-                    );
-
-                });
-
+        /* Newsletter demo */
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                /* Remove this preventDefault() when connecting to your real backend. */
+                e.preventDefault();
+                alert('Thank you for connecting with ELARA.');
             });
+        });
 
     </script>
 
